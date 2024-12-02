@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Privacy</title>
+    <link rel="stylesheet" href="hf.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  </head>
+  <style>
+    main {
+    display: flex;                  /* Use flexbox for centering */
+    flex-direction: column;        /* Stack items vertically */
+    align-items: center;           /* Center items horizontally */
+    text-align: center;            /* Center text inside each item */
+    margin: 20px;                 /* Add some margin around the main section */
+}
+
+h1, h2, p {
+    max-width: 800px;             /* Optional: limit the width of text for better readability */
+    margin: 10px 0;               /* Space between elements */
+}
+
+  </style>
+  <body>
+    <!-- Header Section -->
+    <header class="sticky-header">
+      <div class="container">
+        <div class="logo">
+          <a href="index.html">
+            <img src="logo1.png" alt="Giftsy Logo" />
+          </a>
+        </div>
+
+        <!-- Hamburger Menu Icon -->
+        <div class="hamburger" onclick="toggleMenu()">
+          <i class="fas fa-bars"></i>
+        </div>
+
+        <!-- nav bar -->
+        <nav class="navbar">
+          <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+          </ul>
+        </nav>
+
+        <!-- Search Bar -->
+        <div class="dropdown">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Search for Animal Wallpapers..."
+            onkeyup="filterFunction()"
+          />
+          <div id="dropdownContent" class="dropdown-content"></div>
+        </div>
+        <a href="account.html" class="user-icon">
+          <i class="fas fa-user"></i>
+        </a>
+      </div>
+    </header>
+
+    <main>
+        <h1>Privacy Policy</h1>
+        <p>Your privacy is important to us. This privacy policy outlines how we collect, use, and protect your information.</p>
+        <h2>Information We Collect</h2>
+        <p>We collect information from you when you register on our site, place an order, subscribe to our newsletter, or interact with us.</p>
+        <h2>How We Use Your Information</h2>
+        <p>We use your information to improve our website, process transactions, and send periodic emails.</p>
+        <h2>Security of Your Information</h2>
+        <p>We implement various security measures to maintain the safety of your personal information.</p>
+        <h2>Changes to Our Privacy Policy</h2>
+        <p>We may update this policy periodically. We will notify you about significant changes in the way we treat personal information.</p>
+    </main>
+
+    <br /><br /><br /><br /><br />
+
+    <!-- footer start -->
+
+    <footer class="custom-footer">
+      <div class="footer-logo-section">
+        <div class="footer-logo">
+          <img src="logo1.png" alt="Your Logo" />
+        </div>
+      </div>
+
+      <div class="footer-content">
+        <div class="footer-links-section">
+          <h4>Quick Links</h4>
+          <ul class="footer-quick-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links-section">
+          <h4>Contact</h4>
+          <ul class="footer-quick-links">
+            <li><a href="login.html">Login</a></li>
+            <li><a href="signup.html">Sign up</a></li>
+            <li><a href="account.html">Account</a></li>
+
+            <li><a href="privacy.html">Privacy</a></li>
+            <li><a href="terms.html">Terms & Conditions</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-social-section">
+          <h4>Connect With Us</h4>
+          <div class="social-links">
+            <a href="https://www.facebook.com/login/">
+              <img src="facebook.png" alt="Facebook" class="social-icon" />
+            </a>
+            <a href="https://x.com/login">
+              <img src="twitter.png" alt="Twitter" class="social-icon" />
+            </a>
+            <a href="https://www.instagram.com/">
+              <img src="instagram.png" alt="Instagram" class="social-icon" />
+            </a>
+            <a href="https://pixabay.com/images/search/desktop%20wallpaper/">
+              <img src="pixabay (.png" alt="Pixabay" class="social-icon" />
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-subscribe-section">
+          <h4>Subscribe to Our Newsletter</h4>
+          <p>Receive the latest updates and offers.</p>
+          <form class="subscribe-form" onsubmit="showPopup(event)">
+              <input type="email" placeholder="Enter your email" required>
+              <button type="submit">Subscribe</button>
+          </form>
+      </div>
+      
+      <!-- Popup HTML -->
+      <div id="thankYouPopup" class="popup" style="display: none;">
+          <div class="popup-content">
+              <span class="close-popup" onclick="closePopup()">&times;</span>
+              <p>Thank you for subscribing!</p>
+          </div>
+      </div>
+    </footer>
+
+    <!-- Script to toggle mobile menu -->
+    <script>
+      function toggleMenu() {
+        const navLinks = document.querySelector(".nav-links");
+        navLinks.classList.toggle("active");
+      }
+    </script>
+
+
+<!-- Add this to your script or before the closing body tag -->
+<script>
+  function showPopup(event) {
+      event.preventDefault(); // Prevent form submission
+      document.getElementById("thankYouPopup").style.display = "block"; // Show the popup
+  }
+
+  function closePopup() {
+      document.getElementById("thankYouPopup").style.display = "none"; // Hide the popup
+  }
+
+  // Optional: Close the popup when clicking outside of it
+  window.onclick = function(event) {
+      const popup = document.getElementById("thankYouPopup");
+      if (event.target == popup) {
+          popup.style.display = "none";
+      }
+  }
+</script>
+
+    <!-- External JavaScript -->
+    <script src="hf.js"></script>
+  </body>
+</html>
