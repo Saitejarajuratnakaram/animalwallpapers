@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CreatureViews</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="sub.css">
+    <link rel="stylesheet" href="hf.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header class="sticky-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="logo1.png" alt="Giftsy Logo" />
+                </a>
+            </div>
+
+            <!-- Hamburger Menu Icon -->
+            <div class="hamburger" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </div>
+
+            <!-- nav bar -->
+            <nav class="navbar">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </nav>
+
+            <!-- Search Bar -->
+            <div class="dropdown">
+                <input type="text" id="searchInput" placeholder="Search for Animal Wallpapers..."
+                    onkeyup="filterFunction()" />
+                <div id="dropdownContent" class="dropdown-content"></div>
+            </div>
+            <a href="account.html" class="user-icon">
+                <i class="fas fa-user"></i>
+            </a>
+        </div>
+    </header>
+
+    <div class="container-koala">
+        <div class="image-title-koala">
+            Skink in Its Natural Habitat
+        </div>
+        <div class="breadcrumb-koala">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li>Skink in Its Natural Habitat</li>
+            </ul>
+        </div>
+        <img alt="Skink resting on a rock" class="main-image-koala" src="reptiles17.jpg" />
+        <br><br>
+        <span class="header-koala">
+            <div class="social-share-buttons-koala">
+                <a href="https://www.facebook.com/sharer/sharer.php?u=YOUR_URL" target="_blank"
+                    class="share-button-koala facebook-koala" aria-label="Share on Facebook">
+                    <i class="fab fa-facebook fa-lg"></i>
+                </a>
+                <a href="https://twitter.com/intent/tweet?url=YOUR_URL&text=Check%20this%20out!" target="_blank"
+                    class="share-button-koala twitter-koala" aria-label="Share on Twitter">
+                    <i class="fab fa-twitter fa-lg"></i>
+                </a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=YOUR_URL&title=Your%20Title&summary=Your%20Summary"
+                    target="_blank" class="share-button-koala linkedin-koala" aria-label="Share on LinkedIn">
+                    <i class="fab fa-linkedin fa-lg"></i>
+                </a>
+                <div class="actions-koala">
+                    <i class="fas fa-download fa-2x" onclick="toggleDropdownKoala()"></i>
+                    <div class="dropdown-koala" id="dropdown-koala">
+                        <a href="#" onclick="downloadImageKoala('2k')">2K</a>
+                        <a href="#" onclick="downloadImageKoala('1080p')">1080p</a>
+                    </div>
+                </div>
+            </div>
+        </span>
+        <div class="details-koala">
+            <div class="stats-koala">
+                <div>Views 1,234,567</div>
+                <div>Downloads 4,321</div>
+            </div>
+    
+            <div class="title-koala">Skink in Its Natural Habitat</div>
+            <div class="subtitle-koala">The Elusive Dweller of Leaf Litter</div>
+            <div class="info-koala">
+                <div>📍 Various regions worldwide</div>
+                <div>📅 Published on September 10, 2025</div>
+                <div>📷 NIKON, D500</div>
+                <div>🆓 Free to use under the Unsplash License</div>
+            </div>
+            <div class="description">
+                <p>Skinks are a diverse group of lizards known for their elongated bodies and reduced limbs. They are often found in leaf litter, where they hunt insects and other small invertebrates. Some species possess unique adaptations, such as the ability to regenerate their tails when threatened by predators.</p>
+            </div>
+        </div>
+    
+        <div class="title-koala">Skink Sunbathing on a Rock</div>
+        <div class="subtitle-koala">A serene moment captured as a skink basks in the warmth of the sun.</div>
+        <div class="info-koala">These lizards are known for their vibrant colors and swift movements. This image highlights the beauty and adaptability of skinks in their natural habitat.</div>
+    </div>
+    
+        <div class="related-images-koala">
+            <div class="section-title-koala">
+                <h3 style="margin-left: 50px;">Related Images</h3>
+            </div>
+            <div class="images-koala">
+                <a href="reptiles30.html"><img alt="Python on a rock" src="reptiles30.jpg" /></a>
+                <a href="reptiles3.html"><img alt="Python coiled in grass" src="reptiles3.jpg" /></a>
+                <a href="reptiles25.html"><img alt="Close-up of a python" src="reptiles25.jpg" /></a>
+                <a href="reptiles10.html"><img alt="Python in the wild" src="reptiles10.jpg" /></a>
+                <a href="reptiles12.html"><img alt="Python climbing a tree" src="reptiles12.jpg" /></a>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    
+    <br /><br /><br /><br /><br />
+
+    <!-- footer start -->
+
+    <footer class="custom-footer">
+        <div class="footer-logo-section">
+            <div class="footer-logo">
+                <img src="logo1.png" alt="Your Logo" />
+            </div>
+        </div>
+
+        <div class="footer-content">
+            <div class="footer-links-section">
+                <h4>Quick Links</h4>
+                <ul class="footer-quick-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links-section">
+                <h4>Contact</h4>
+                <ul class="footer-quick-links">
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="signup.html">Sign up</a></li>
+                    <li><a href="account.html">Account</a></li>
+
+                    <li><a href="privacy.html">Privacy</a></li>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-social-section">
+                <h4>Connect With Us</h4>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/login/">
+                        <img src="facebook.png" alt="Facebook" class="social-icon" />
+                    </a>
+                    <a href="https://x.com/login">
+                        <img src="twitter.png" alt="Twitter" class="social-icon" />
+                    </a>
+                    <a href="https://www.instagram.com/">
+                        <img src="instagram.png" alt="Instagram" class="social-icon" />
+                    </a>
+                    <a href="https://pixabay.com/images/search/desktop%20wallpaper/">
+                        <img src="pixabay (.png" alt="Pixabay" class="social-icon" />
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-subscribe-section">
+                <h4>Subscribe to Our Newsletter</h4>
+                <p>Receive the latest updates and offers.</p>
+                <form class="subscribe-form" onsubmit="showPopup(event)">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+
+            <!-- Popup HTML -->
+            <div id="thankYouPopup" class="popup" style="display: none;">
+                <div class="popup-content">
+                    <span class="close-popup" onclick="closePopup()">&times;</span>
+                    <p>Thank you for subscribing!</p>
+                </div>
+            </div>
+    </footer>
+
+    <!-- Script to toggle mobile menu -->
+    <script>
+        function toggleMenu() {
+            const navLinks = document.querySelector(".nav-links");
+            navLinks.classList.toggle("active");
+        }
+    </script>
+
+    <!-- Add this to your script or before the closing body tag -->
+    <script>
+        function showPopup(event) {
+            event.preventDefault(); // Prevent form submission
+            document.getElementById("thankYouPopup").style.display = "block"; // Show the popup
+        }
+
+        function closePopup() {
+            document.getElementById("thankYouPopup").style.display = "none"; // Hide the popup
+        }
+
+        // Optional: Close the popup when clicking outside of it
+        window.onclick = function (event) {
+            const popup = document.getElementById("thankYouPopup");
+            if (event.target == popup) {
+                popup.style.display = "none";
+            }
+        }
+    </script>
+
+    <!-- External JavaScript -->
+    <script src="hf.js"></script>
+
+    <script>
+        function toggleDropdownKoala() {
+            var dropdown = document.getElementById("dropdown-koala");
+            dropdown.style.display = dropdown.style.display === "none" || dropdown.style.display === "" ? "block" : "none";
+        }
+
+        function downloadImageKoala(size) {
+            var imageUrl = "reptiles17.jpg";
+            var link = document.createElement("a");
+            link.href = imageUrl;
+            link.download = `skink-wallpaper-${size}.jpg`;
+            link.click();
+        }
+    </script>
+</body>
+
+</html>
