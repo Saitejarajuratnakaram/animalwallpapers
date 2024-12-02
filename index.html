@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Creature Views</title>
+    <link rel="stylesheet" href="hf.css" />
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header class="sticky-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="logo1.png" alt="Giftsy Logo" />
+                </a>
+            </div>
+
+            <!-- Hamburger Menu Icon -->
+            <div class="hamburger" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </div>
+
+            <!-- nav bar -->
+            <nav class="navbar">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </nav>
+
+            <!-- Search Bar -->
+            <div class="dropdown">
+                <input type="text" id="searchInput" placeholder="Search for Animal Wallpapers..."
+                    onkeyup="filterFunction()" />
+                <div id="dropdownContent" class="dropdown-content"></div>
+            </div>
+            <a href="account.html" class="user-icon">
+                <i class="fas fa-user"></i>
+            </a>
+        </div>
+    </header>
+
+    <body>
+        <!-- carousel -->
+        <div class="carousel" >
+            <!-- list item -->
+            <div class="list">
+                <div class="item">
+                    <img src="caro1.jpg">
+                    <div class="content">
+                        <div class="author">CREATURE VIEWS</div>
+                        <div class="title">PET WALLPAPER</div>
+                        <div class="topic">CAT</div>
+                        <div class="des">
+                            <!-- lorem 50 -->
+                            Delight in the adorable charm of this captivating cat wallpaper, featuring a fluffy feline
+                            nestled in a cozy nook.
+                        </div>
+                        <div class="buttons">
+                            <a href="categori1.html" class="button">SEE MORE</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="caro2.jpg">
+                    <div class="content">
+                        <div class="author">CREATURE VIEWS</div>
+                        <div class="title">SNOW ANIMALS</div>
+                        <div class="topic">HUSKY</div>
+                        <div class="des">
+                            Immerse yourself in the captivating beauty of the Siberian Husky with this stunning
+                            wallpaper. </div>
+                        <div class="buttons">
+                            <a href="categori1.html" class="button">SEE MORE</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="caro3.jpg">
+                    <div class="content">
+                        <div class="author">CREATURE VIEWS</div>
+                        <div class="title">WILDLIFE</div>
+                        <div class="topic">LION</div>
+                        <div class="des">
+                            Immerse yourself in the raw power and beauty of the king of the jungle with this stunning
+                            lion wallpaper. </div>
+                        <div class="buttons">
+                            <a href="categori1.html" class="button">SEE MORE</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="caro4.jpg">
+                    <div class="content">
+                        <div class="author">CREATURE VIEWS</div>
+                        <div class="title">BIRDS</div>
+                        <div class="topic">HUMMING BIRD</div>
+                        <div class="des">
+                            Experience the delicate beauty of nature with this mesmerizing hummingbird wallpaper.
+                            Featuring a vibrant hummingbird in mid-flight sapphire blue. Its wings, a blur of
+                            motion</div>
+                        <div class="buttons">
+                            <a href="categori2.html " class="button">SEE MORE</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- list thumnail -->
+            <div class="thumbnail">
+                <div class="item">
+                    <img src="caro1.jpg">
+                    <div class="content">
+                        <div class="title">
+                            CAT
+                        </div>
+                        <div class="description">
+                            PET WALLPAPER
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="caro2.jpg">
+                    <div class="content">
+                        <div class="title">
+                            SIBERIAN HUSKY
+                        </div>
+                        <div class="description">
+                            Description
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="caro3.jpg">
+                    <div class="content">
+                        <div class="title">
+                            KING LION
+                        </div>
+                        <div class="description">
+                            WILD ANIMALS
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="caro4.jpg">
+                    <div class="content">
+                        <div class="title">
+                            Humming Bird
+                        </div>
+                        <div class="description">
+                            BIRDS
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- next prev -->
+
+            <div class="arrows">
+            <button id="prev"> < </button>
+            <button id="next">></button>
+            </div>
+            <!-- time running -->
+            <div class="time"></div>
+        </div> 
+
+
+        <!-- featured wallpaper sec -->
+
+        <section class="featured-wallpapers">
+            <h2 style="color: #1a3636;">Featured Animal Wallpapers</h2>
+            <div class="wallpapers-container">
+                <!-- Animal 1 -->
+                <div class="wallpaper-item large">
+                    <img src="animal1.jpg" alt="Tiger" loading="lazy" class="wallpaper-thumbnail">
+
+                    <h3 class="wallpaper-title">Tiger</h3>
+                    <a href="animal1.jpg" download="Tiger.jpg" class="downloadin-btn">
+                        <i class="fas fa-download"></i>
+                    </a>
+                </div>
+
+                <!-- Animal 2 -->
+                <div class="wallpaper-item small">
+                    <img src="animal2.jpg" alt="Elephant" loading="lazy" class="wallpaper-thumbnail">
+
+                    <h3 class="wallpaper-title">Elephant</h3>
+                    <a href="animal2.jpg" download="Elephant.jpg" class="downloadin-btn"><i
+                            class="fas fa-download"></i></a>
+                </div>
+
+                <!-- Animal 3 -->
+                <div class="wallpaper-item medium">
+                    <img src="animal3.jpg" alt="Lion" loading="lazy" class="wallpaper-thumbnail">
+
+                    <h3 class="wallpaper-title">Lion</h3>
+                    <a href="animal3.jpg" download="Lion.jpg" class="downloadin-btn"><i class="fas fa-download"></i></a>
+                </div>
+
+                <!-- Continue adding animal wallpapers -->
+                <div class="wallpaper-item large">
+                    <img src="animal4.jpg" alt="Giraffe" loading="lazy" class="wallpaper-thumbnail">
+
+                    <h3 class="wallpaper-title">Giraffe</h3>
+                    <a href="animal4.jpg" download="Giraffe.jpg" class="downloadin-btn"><i
+                            class="fas fa-download"></i></a>
+                </div>
+
+                <div class="wallpaper-item small">
+                    <img src="animal5.jpg" alt="Panda" loading="lazy" class="wallpaper-thumbnail">
+
+                    <h3 class="wallpaper-title">Panda</h3>
+                    <a href="animal5.jpg" download="Panda.jpg" class="downloadin-btn"><i
+                            class="fas fa-download"></i></a>
+                </div>
+
+                <div class="wallpaper-item medium">
+                    <img src="animal6.jpg" alt="Zebra" loading="lazy" class="wallpaper-thumbnail">
+
+                    <h3 class="wallpaper-title">Zebra</h3>
+                    <a href="animal6.jpg" download="Zebra.jpg" class="downloadin-btn"><i
+                            class="fas fa-download"></i></a>
+                </div>
+
+                <!-- Add more animals, up to 30 -->
+                <div class="wallpaper-item large">
+                    <img src="animal7.jpg" alt="Wolf" loading="lazy" class="wallpaper-thumbnail">
+
+                    <h3 class="wallpaper-title">Wolf</h3>
+                    <a href="animal7.jpg" download="Wolf.jpg" class="downloadin-btn"><i class="fas fa-download"></i></a>
+                </div>
+
+                <div class="wallpaper-item small">
+                    <img src="animal8.jpg" alt="Koala" loading="lazy" class="wallpaper-thumbnail">
+
+                    <h3 class="wallpaper-title">Koala</h3>
+                    <a href="animal8.jpg" download="Koala.jpg" class="downloadin-btn"><i
+                            class="fas fa-download"></i></a>
+                </div>
+
+                <div class="wallpaper-item medium">
+                    <img src="animal9.jpg" alt="Penguin" loading="lazy" class="wallpaper-thumbnail">
+
+                    <h3 class="wallpaper-title">Penguin</h3>
+                    <a href="animal9.jpg" download="Penguin.jpg" class="downloadin-btn"><i
+                            class="fas fa-download"></i></a>
+                </div>
+
+                <!-- ... Add more images as needed ... -->
+                <!-- Animal 10 -->
+                <div class="wallpaper-item small">
+                    <img src="animal10.jpg" alt="Leopard" loading="lazy" class="wallpaper-thumbnail">
+
+                    <h3 class="wallpaper-title">Leopard</h3>
+                    <a href="animal10.jpg" download="Leopard.jpg" class="downloadin-btn"><i
+                            class="fas fa-download"></i></a>
+                </div>
+
+                <!-- Animal 11 -->
+                <div class="wallpaper-item medium">
+                    <img src="animal11.jpg" alt="Cheetah" loading="lazy" class="wallpaper-thumbnail">
+
+                    <h3 class="wallpaper-title">Cheetah</h3>
+                    <a href="animal11.jpg" download="Cheetah.jpg" class="downloadin-btn"><i
+                            class="fas fa-download"></i></a>
+                </div>
+
+                <!-- Animal 12 -->
+                <div class="wallpaper-item large">
+                    <img src="animal12.jpg" alt="Polar Bear" loading="lazy" class="wallpaper-thumbnail">
+
+                    <h3 class="wallpaper-title">Polar Bear</h3>
+                    <a href="animal12.jpg" download="PolarBear.jpg" class="downloadin-btn"><i
+                            class="fas fa-download"></i></a>
+                </div>
+
+                <!-- Animal 13 -->
+                <div class="wallpaper-item small">
+                    <img src="animal13.jpg" alt="Kangaroo" loading="lazy" class="wallpaper-thumbnail">
+
+                    <h3 class="wallpaper-title">Kangaroo</h3>
+                    <a href="animal13.jpg" download="Kangaroo.jpg" class="downloadin-btn"><i
+                            class="fas fa-download"></i></a>
+                </div>
+
+                <!-- Animal 14 -->
+                <div class="wallpaper-item medium">
+                    <img src="animal14.jpg" alt="Fox" loading="lazy" class="wallpaper-thumbnail">
+
+                    <h3 class="wallpaper-title">Fox</h3>
+                    <a href="animal14.jpg" download="Fox.jpg" class="downloadin-btn"><i class="fas fa-download"></i></a>
+                </div>
+
+                <!-- Animal 15 -->
+                <div class="wallpaper-item large">
+                    <img src="animal15.jpg" alt="Bear" loading="lazy" class="wallpaper-thumbnail">
+
+                    <h3 class="wallpaper-title">Bear</h3>
+                    <a href="animal15.jpg" download="Bear.jpg" class="downloadin-btn"><i
+                            class="fas fa-download"></i></a>
+                </div>
+
+                <!-- Animal 16 -->
+                <div class="wallpaper-item small">
+                    <img src="animal16.jpg" alt="Owl" loading="lazy" class="wallpaper-thumbnail">
+
+                    <h3 class="wallpaper-title">Owl</h3>
+                    <a href="animal16.jpg" download="Owl.jpg" class="downloadin-btn"><i class="fas fa-download"></i></a>
+                </div>
+
+                <!-- Animal 17 -->
+                <div class="wallpaper-item medium">
+                    <img src="animal17.jpg" alt="Eagle" loading="lazy" class="wallpaper-thumbnail">
+
+                    <h3 class="wallpaper-title">Eagle</h3>
+                    <a href="animal17.jpg" download="Eagle.jpg" class="downloadin-btn"><i
+                            class="fas fa-download"></i></a>
+                </div>
+
+                <!-- Animal 18 -->
+                <div class="wallpaper-item large">
+                    <img src="animal18.jpg" alt="Raccoon" loading="lazy" class="wallpaper-thumbnail">
+
+                    <h3 class="wallpaper-title">Raccoon</h3>
+                    <a href="animal18.jpg" download="Raccoon.jpg" class="downloadin-btn"><i
+                            class="fas fa-download"></i></a>
+                </div>
+
+                <!-- Animal 19 -->
+                <div class="wallpaper-item small">
+                    <img src="animal19.jpg" alt="Squirrel" loading="lazy" class="wallpaper-thumbnail">
+
+                    <h3 class="wallpaper-title">Squirrel</h3>
+                    <a href="animal19.jpg" download="Squirrel.jpg" class="downloadin-btn"><i
+                            class="fas fa-download"></i></a>
+                </div>
+
+                <!-- Animal 20 -->
+                <div class="wallpaper-item medium">
+                    <img src="animal20.jpg" alt="Horse" loading="lazy" class="wallpaper-thumbnail">
+
+                    <h3 class="wallpaper-title">Horse</h3>
+                    <a href="animal20.jpg" download="Horse.jpg" class="downloadin-btn"><i
+                            class="fas fa-download"></i></a>
+                </div>
+
+                <!-- Animal 21 -->
+                <div class="wallpaper-item large">
+                    <img src="animal21.jpg" alt="Chimpanzee" loading="lazy" class="wallpaper-thumbnail">
+
+                    <h3 class="wallpaper-title">Chimpanzee</h3>
+                    <a href="animal21.jpg" download="Chimpanzee.jpg" class="downloadin-btn"><i
+                            class="fas fa-download"></i></a>
+                </div>
+
+                <!-- Animal 22 -->
+                <div class="wallpaper-item small">
+                    <img src="animal22.jpg" alt="Dolphin" loading="lazy" class="wallpaper-thumbnail">
+
+                    <h3 class="wallpaper-title">Dolphin</h3>
+                    <a href="animal22.jpg" download="Dolphin.jpg" class="downloadin-btn"><i
+                            class="fas fa-download"></i></a>
+                </div>
+
+                <!-- Animal 23 -->
+                <div class="wallpaper-item medium">
+                    <img src="animal23.jpg" alt="Shark" loading="lazy" class="wallpaper-thumbnail">
+
+                    <h3 class="wallpaper-title">Shark</h3>
+                    <a href="animal23.jpg" download="Shark.jpg" class="downloadin-btn"><i
+                            class="fas fa-download"></i></a>
+                </div>
+
+                <!-- Animal 24 -->
+                <div class="wallpaper-item large">
+                    <img src="animal24.jpg" alt="Whale" loading="lazy" class="wallpaper-thumbnail">
+
+                    <h3 class="wallpaper-title">Whale</h3>
+                    <a href="animal24.jpg" download="Whale.jpg" class="downloadin-btn"><i
+                            class="fas fa-download"></i></a>
+                </div>
+
+                <!-- Animal 25 -->
+                <div class="wallpaper-item small">
+                    <img src="animal25.jpg" alt="Octopus" loading="lazy" class="wallpaper-thumbnail">
+
+                    <h3 class="wallpaper-title">Octopus</h3>
+                    <a href="animal25.jpg" download="Octopus.jpg" class="downloadin-btn"><i
+                            class="fas fa-download"></i></a>
+                </div>
+
+                <!-- Animal 26 -->
+                <div class="wallpaper-item medium">
+                    <img src="animal26.jpg" alt="Parrot" loading="lazy" class="wallpaper-thumbnail">
+
+                    <h3 class="wallpaper-title">Parrot</h3>
+                    <a href="animal26.jpg" download="Parrot.jpg" class="downloadin-btn"><i
+                            class="fas fa-download"></i></a>
+                </div>
+
+                <!-- Animal 27 -->
+                <div class="wallpaper-item large">
+                    <img src="animal27.jpg" alt="Flamingo" loading="lazy" class="wallpaper-thumbnail">
+
+                    <h3 class="wallpaper-title">Flamingo</h3>
+                    <a href="animal27.jpg" download="Flamingo.jpg" class="downloadin-btn"><i
+                            class="fas fa-download"></i></a>
+                </div>
+
+                <!-- Animal 28 -->
+                <div class="wallpaper-item small">
+                    <img src="animal28.jpg" alt="Crocodile" loading="lazy" class="wallpaper-thumbnail">
+
+                    <h3 class="wallpaper-title">Crocodile</h3>
+                    <a href="animal28.jpg" download="Crocodile.jpg" class="downloadin-btn"><i
+                            class="fas fa-download"></i></a>
+                </div>
+
+                <!-- Animal 29 -->
+                <div class="wallpaper-item medium">
+                    <img src="animal29.jpg" alt="Deer" loading="lazy" class="wallpaper-thumbnail">
+
+                    <h3 class="wallpaper-title">Deer</h3>
+                    <a href="animal29.jpg" download="Deer.jpg" class="downloadin-btn"><i
+                            class="fas fa-download"></i></a>
+                </div>
+
+                <!-- Animal 30 -->
+                <div class="wallpaper-item medium">
+                    <img src="animal30.jpg" alt="Frog" loading="lazy" class="wallpaper-thumbnail">
+
+                    <h3 class="wallpaper-title">Frog</h3>
+                    <a href="animal30.jpg" download="Frog.jpg" class="downloadin-btn"><i
+                            class="fas fa-download"></i></a>
+                </div>
+
+
+            </div>
+        </section>
+
+        <!-- category section -->
+
+        <section class="category-section">
+            <h2 class="category-title" style="color: #1a3636;">Explore Animal Categories</h2>
+
+            <div class="category-container">
+                <!-- Mammals -->
+                <div class="category-card" onclick="location.href='categori1.html'">
+                    <img src="mammals.jpg" alt="Mammals">
+                    <div class="category-info">
+                        <h3>Mammals</h3>
+                    </div>
+                </div>
+
+                <!-- Birds -->
+                <div class="category-card" onclick="location.href='categori2.html'">
+                    <img src="birds.jpg" alt="Birds">
+                    <div class="category-info">
+                        <h3>Birds</h3>
+                    </div>
+                </div>
+
+                <!-- Sea Animals -->
+                <div class="category-card" onclick="location.href='categori3.html'">
+                    <img src="sea animals.jpg" alt="Sea Animals">
+                    <div class="category-info">
+                        <h3>Aqua Creatures</h3>
+                    </div>
+                </div>
+
+                <!-- Reptiles -->
+                <div class="category-card" onclick="location.href='categori4.html'">
+                    <img src="reptiles.jpg" alt="Reptiles">
+                    <div class="category-info">
+                        <h3>Reptiles</h3>
+                    </div>
+                </div>
+
+                <!-- All Animals
+                <div class="category-card" onclick="location.href='all-animals.html'">
+                    <img src="all animals.jpg" alt="All Animals">
+                    <div class="category-info">
+                        <h3>All Animals</h3>
+                    </div>
+                </div> -->
+            </div>
+        </section>
+
+
+
+
+
+        <!-- news -->
+
+        <div
+            style="display: flex; align-items: center; justify-content: center; background-color: #f7f6f6;">
+            <div
+                style="display: flex; background-color: white; border-radius: 8px; box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1); max-width: 900px; overflow: hidden;">
+
+                <!-- Newsletter Section -->
+                <div style="padding: 30px; max-width: 400px;">
+                    <h2 style="font-size: 2em; font-weight: bold;">Want to Download  More Free Images?</h2>
+                    <p style="font-size: 1.1em;">Get Latest updates By Subscribing.</p>
+
+                    <form id="subscribeForm" style="margin-top: 20px;">
+                        <input type="email" name="email" placeholder="Enter your email" required
+                            style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 4px;">
+
+                        <input type="text" name="phone" placeholder="Enter your phone (optional)"
+                            style="width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 4px;">
+
+                        <button type="submit"
+                            style="width: 100%; padding: 10px; background-color: #28a745; color: white; border: none; border-radius: 4px; font-size: 1.1em; cursor: pointer;">
+                            Subscribe
+                        </button>
+                    </form>
+
+                    <p style="font-size: 0.8em; color: #888; margin-top: 10px;">
+                        *New customers only. By signing up via text, I agree to receive recurring automated text
+                        messages at the phone number provided. Consent is not a condition to purchase. Msg & data rates
+                        may apply. View our <a href="terms.html" style="color: #28a745;">Terms of Service</a> and <a href="privacy.html"
+                            style="color: #28a745;">Privacy Policy</a> for details.
+                    </p>
+                </div>
+
+                <!-- Image Section -->
+                <div style="flex: 1;">
+                    <img src="backk.avif" alt="Plants Image" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+
+            </div>
+        </div>
+
+
+        <script>
+            document.getElementById("subscribeForm").addEventListener("submit", function (event) {
+                event.preventDefault(); // Prevent form submission
+                alert("Thank you for subscribing!"); // Show alert message
+            });
+        </script>
+
+
+        <!-- scripts -->
+        <script>
+            function changeImage(imageSrc) {
+                const mainImage = document.getElementById('main-image');
+                const downloadBtn = document.getElementById('download-btn');
+
+                // Fade out the main image
+                mainImage.style.opacity = 0;
+
+                // Update the main image and the download link after a short delay
+                setTimeout(() => {
+                    mainImage.src = imageSrc;
+                    downloadBtn.href = imageSrc; // Update download button link
+                    downloadBtn.download = imageSrc; // Update download filename
+                    mainImage.style.opacity = 1; // Fade in the new image
+                }, 500); // 0.5s for a smooth transition
+            }
+        </script>
+
+
+        <!-- footer start -->
+
+        <footer class="custom-footer">
+            <div class="footer-logo-section">
+                <div class="footer-logo">
+                    <img src="logo1.png" alt="Your Logo" />
+                </div>
+            </div>
+
+            <div class="footer-content">
+                <div class="footer-links-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-quick-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links-section">
+                    <h4>Contact</h4>
+                    <ul class="footer-quick-links">
+                        <li><a href="login.html">Login</a></li>
+                        <li><a href="signup.html">Sign up</a></li>
+                        <li><a href="account.html">Account</a></li>
+
+                        <li><a href="privacy.html">Privacy</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-social-section">
+                    <h4>Connect With Us</h4>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/login/">
+                            <img src="facebook.png" alt="Facebook" class="social-icon" />
+                        </a>
+                        <a href="https://x.com/login">
+                            <img src="twitter.png" alt="Twitter" class="social-icon" />
+                        </a>
+                        <a href="https://www.instagram.com/">
+                            <img src="instagram.png" alt="Instagram" class="social-icon" />
+                        </a>
+                        <a href="https://pixabay.com/images/search/desktop%20wallpaper/">
+                            <img src="pixabay (.png" alt="Pixabay" class="social-icon" />
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-subscribe-section">
+                    <h4>Subscribe to Our Newsletter</h4>
+                    <p>Receive the latest updates and offers.</p>
+                    <form class="subscribe-form" onsubmit="showPopup(event)">
+                        <input type="email" placeholder="Enter your email" required>
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+
+                <!-- Popup HTML -->
+                <div id="thankYouPopup" class="popup" style="display: none;">
+                    <div class="popup-content">
+                        <span class="close-popup" onclick="closePopup()">&times;</span>
+                        <p>Thank you for subscribing!</p>
+                    </div>
+                </div>
+        </footer>
+
+        <!-- Script to toggle mobile menu -->
+        <script>
+            function toggleMenu() {
+                const navLinks = document.querySelector(".nav-links");
+                navLinks.classList.toggle("active");
+            }
+        </script>
+
+
+        <!-- Add this to your script or before the closing body tag -->
+        <script>
+            function showPopup(event) {
+                event.preventDefault(); // Prevent form submission
+                document.getElementById("thankYouPopup").style.display = "block"; // Show the popup
+            }
+
+            function closePopup() {
+                document.getElementById("thankYouPopup").style.display = "none"; // Hide the popup
+            }
+
+            // Optional: Close the popup when clicking outside of it
+            window.onclick = function (event) {
+                const popup = document.getElementById("thankYouPopup");
+                if (event.target == popup) {
+                    popup.style.display = "none";
+                }
+            }
+        </script>
+
+        <!-- External JavaScript -->
+        <script src="hf.js"></script>
+        <script src="appp.js"></script>
+    </body>
+
+</html>

@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Creature Views</title>
+  <link rel="stylesheet" href="hf.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+  <!-- Boxicons CDN Link -->
+  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<style>
+  /* Add hover effect to images */
+  /* img.img-hover-effect {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    } */
+
+  img.img-hover-effect:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  }
+
+  .logo img {
+    width: 100px;
+    /* Adjust the size of your logo */
+  }
+
+  .answer {
+    display: none;
+    margin-top: 5px;
+    color: rgb(26, 26, 26);
+  }
+
+  .faq-heading {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2em;
+  }
+
+  .service h3 {
+    cursor: pointer;
+    color: #ffa31d;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 20px;
+  }
+
+  .service {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease;
+    height: auto;
+  }
+
+  .service:hover {
+    background-color: #f9f9f9;
+  }
+
+  .toggle-symbol {
+    font-size: 2em;
+    color: black;
+  }
+
+  .social-image {
+    width: 62px;
+    height: 56px;
+    /* max-width: 50px; Adjust the size as needed */
+    display: block;
+  }
+
+  .site-section.section-counter {
+    padding: 60px 0;
+  }
+
+  .block-48 {
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #e6e6e6;
+    margin-bottom: 30px;
+  }
+
+  .block-48-text-1 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .block-48-counter {
+    font-size: 36px;
+    font-weight: bold;
+    color: #ff5a5f;
+  }
+
+  .mb-4 {
+    margin-bottom: 1.5rem;
+  }
+
+  .d-block {
+    display: block;
+  }
+
+
+  .image-section {
+    padding: 30px;
+  }
+
+  .image-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    /* Adjust spacing between images */
+  }
+
+  :root {
+    --color-one: #130e23;
+    --color-two: #364b44;
+    --text-color: White;
+    --mem-width: min(38em, calc(100vw - 4em));
+    --mem-height: min(36em, calc(100vw - 6em));
+    --slide-duration: 0.9s;
+    --text-duration: 0.9s;
+    --text-l-height: 1.5em;
+    --lbg: "https://lidachk.github.io/cssBayan/cssBayan/assets/lbg370.png";
+    --lbg-50: "https://lidachk.github.io/cssBayan/cssBayan/assets/lbg50.png";
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  ul {
+    padding: 0;
+    list-style: none;
+  }
+
+  body,
+  h1,
+  h4,
+  p,
+  ul,
+  ol,
+  li {
+    margin: 0;
+  }
+
+  * {
+    margin: 0;
+  }
+
+  body {
+
+    min-height: 100vh;
+    scroll-behavior: smooth;
+    text-rendering: optimizeSpeed;
+    line-height: 1.5;
+
+    color: var(--text-color);
+
+    background-color: #140f22;
+    background-image: url("https://lidachk.github.io/cssBayan/cssBayan/assets/lbg_317.png"),
+      url("https://lidachk.github.io/cssBayan/cssBayan/assets/filter.svg"),
+      linear-gradient(90deg, #261947, black, #140f22);
+    background-repeat: no-repeat, repeat, repeat;
+    background-position: 0% 100%, 0 0, center;
+    background-blend-mode: lighten;
+    background-attachment: fixed;
+    background-size: 100vmin, auto, auto;
+    animation: start1 2s ease-in-out;
+  }
+
+  @keyframes start {
+    0% {
+      background-blend-mode: color-burn;
+    }
+
+    50% {
+      background-blend-mode: darken;
+    }
+
+    100% {
+      background-blend-mode: lighten;
+    }
+  }
+
+  @keyframes start1 {
+    0% {
+      background-position: -100% 0, 0 0, center;
+    }
+
+    100% {
+      background-position: 0 100%, 0 0, center;
+    }
+  }
+
+  input,
+  button,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  main {
+    margin: 1em auto;
+    width: var(--mem-width);
+    max-width: 100%;
+    font-size: 0.7rem;
+  }
+
+  .head {
+    display: block;
+    width: 100%;
+    height: auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    margin: 1em 0;
+    text-transform: uppercase;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  ul.item-list {
+    max-width: var(--mem-width);
+    margin: 0 auto;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  img[width][height] {
+    height: auto;
+  }
+
+  /* Let SVG scale without boundaries */
+  img[src$=".svg"] {
+    width: 100%;
+    height: auto;
+    max-width: none;
+  }
+
+  /* input {
+	display: none;
+} */
+
+  label {
+    width: 100%;
+    /*   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; */
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    grid-template-areas: "h4 control" "img img";
+    margin-bottom: 1em;
+    border-radius: 0.5em;
+    background-color: black;
+    transition: all 0.35s ease-in-out;
+    padding: 0.5em;
+  }
+
+  label>h4 {
+    height: var(--text-l-height);
+    overflow: hidden;
+    /*   text-overflow: ellipsis;
+  animation: text-hide var(--text-duration) ease-in-out; */
+    transition: height var(--text-duration) ease-in-out;
+    grid-area: h4;
+  }
+
+  label>.control {
+    grid-area: control;
+  }
+
+  label>.slider {
+    grid-area: img;
+  }
+
+  .slider {
+    margin-top: 1em;
+    overflow: hidden;
+    transition: all var(--slide-duration);
+    height: 0;
+  }
+
+  input:checked+label>.slider {
+    /*  animation: details-show var(--slide-duration) ease-in-out; */
+    transition: height var(--slide-duration) ease-in-out;
+    height: var(--mem-height);
+  }
+
+  input:checked+label>h4 {
+    height: calc(var(--text-l-height) * 3);
+    /* animation: text-show var(--text-duration) ease-in-out; */
+    transition: height var(--text-duration) ease-in-out;
+  }
+
+  input:not(:checked)+label>.slider {
+    /* animation: details-hide var(--slide-duration) ease-in-out; */
+    transition: height var(--slide-duration) ease-in-out;
+    height: 0;
+  }
+
+  .control {
+    display: block;
+    width: var(--text-l-height);
+    height: var(--text-l-height);
+    background: url(https://lidachk.github.io/cssBayan/cssBayan/assets/control.svg);
+    filter: invert(1%) sepia(42%) saturate(1672%) hue-rotate(167deg) brightness(101%) contrast(87%);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+    transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+
+    opacity: 0;
+  }
+
+  input:checked~label>.control {
+    transform: rotate(-1.5turn);
+    -webkit-transform: rotate(-1.5turn);
+    -moz-transform: rotate(-1.5turn);
+    -ms-transform: rotate(-1.5turn);
+    -o-transform: rotate(-1.5turn);
+  }
+
+  @keyframes details-show {
+    0% {
+      height: 0;
+    }
+
+    100% {
+      height: var(--mem-height);
+    }
+  }
+
+  @keyframes details-hide {
+    0% {
+      height: var(--mem-height);
+    }
+
+    100% {
+      height: 0;
+    }
+  }
+
+  @keyframes text-show {
+    0% {
+      height: var(--text-l-height);
+    }
+
+    100% {
+      height: calc(var(--text-l-height) * 3);
+    }
+  }
+
+  @keyframes text-hide {
+    0% {
+      height: calc(var(--text-l-height) * 3);
+    }
+
+    100% {
+      height: var(--text-l-height);
+    }
+  }
+
+  @keyframes glow {
+    0% {
+      filter: drop-shadow(0 -0.2em 0.5em #5ed8d8);
+    }
+
+    100% {
+      filter: drop-shadow(0 -0.2em 0.8em #5ed8d8);
+    }
+  }
+
+  .label:active>.control,
+  .label:active {
+    opacity: 1;
+    animation: 0.9s glow ease-in-out infinite alternate;
+  }
+
+  @media (hover: hover) {
+
+    li,
+    label {
+      cursor: pointer;
+    }
+
+    input:not(:checked)+label:hover>.slider {
+      /* animation: details-show var(--slide-duration) ease-in-out; */
+      transition: height var(--slide-duration) ease-in-out;
+      height: var(--mem-height);
+    }
+
+    input:not(:checked)+label:not(:hover)>.slider {
+      /* animation: details-hide var(--slide-duration) ease-in-out; */
+      transition: height var(--slide-duration) ease-in-out;
+      height: 0;
+    }
+
+    input:not(:checked)+label:hover>h4 {
+      /* animation: text-show var(--text-duration) ease-in-out; */
+      transition: height var(--text-duration) ease-in-out;
+      height: calc(var(--text-l-height) * 3);
+    }
+
+    input:not(:checked)+label:not(:hover)>h4 {
+      /* animation: text-hide var(--text-duration) ease-in-out; */
+      transition: height var(--text-duration) ease-in-out;
+      height: var(--text-l-height);
+    }
+
+    ul:hover .control {
+      opacity: 1;
+    }
+
+    input:not(:checked)+label:hover>.control {
+      transform: rotate(1.25turn);
+      -webkit-transform: rotate(1.25turn);
+      -moz-transform: rotate(1.25turn);
+      -ms-transform: rotate(1.25turn);
+      -o-transform: rotate(1.25turn);
+      filter: drop-shadow(0 -0.2em 0.5em #5ed8d8);
+    }
+  }
+
+  @media all and (min-width: 820px) and (max-width: 1022px) {
+
+    /*tablet*/
+    body {
+      background-image: url("https://lidachk.github.io/cssBayan/cssBayan/assets/lbg_470.png"),
+        url("https://lidachk.github.io/cssBayan/cssBayan/assets/filter.svg"),
+        linear-gradient(90deg, #261947, black, #140f22);
+    }
+
+    .label {
+      padding: 1em;
+    }
+
+    main {
+      font-size: 1rem;
+    }
+  }
+
+  @media all and (min-width: 1023px) {
+
+    /*descktop*/
+    :root {
+      --mem-width: 38rem;
+      --mem-height: 36rem;
+    }
+
+    body {
+      background-image: url("lionsss.jpg"),
+        url("https://lidachk.github.io/cssBayan/cssBayan/assets/filter.svg"),
+        linear-gradient(90deg, #261947, black, #140f22);
+    }
+
+    .head {
+      margin: 1em 0;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .label {
+      padding: 1rem;
+    }
+
+    body {
+      background-size: min(calc(50wv-20rem), 100vmin), auto, auto;
+    }
+
+    main {
+      font-size: 1.5rem;
+    }
+  }
+</style>
+
+<body>
+  <!-- Header Section -->
+  <header class="sticky-header">
+    <div class="container">
+      <div class="logo">
+        <a href="index.html">
+          <img src="logo1.png" alt="Giftsy Logo" />
+        </a>
+      </div>
+
+      <!-- Hamburger Menu Icon -->
+      <div class="hamburger" onclick="toggleMenu()">
+        <i class="fas fa-bars"></i>
+      </div>
+
+      <!-- nav bar -->
+      <nav class="navbar">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </nav>
+
+      <!-- Search Bar -->
+      <div class="dropdown">
+        <input type="text" id="searchInput" placeholder="Search for Animal Wallpapers..." onkeyup="filterFunction()" />
+        <div id="dropdownContent" class="dropdown-content"></div>
+      </div>
+      <a href="account.html" class="user-icon">
+        <i class="fas fa-user"></i>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <h1 class="head">FAQ'S</h1>
+    <ul class="item-list">
+      <!-- <li class="item1">
+                <input type="radio" name="point" id="slide1" checked>
+                <label for="slide1" class="label">
+                    <h4>What types of wallpapers do you offer for mobile devices?<br>
+                        We offer a variety of wallpapers optimized for mobile screens,<br>
+                        including nature, abstract designs, and popular themes.</h4><span class="control"></span>
+                    <div class="slider">
+                        <img sizes="(max-width: 589px) 100vw" srcset="
+                            https://example.com/images/mobile_wallpaper1_320.png 320w,
+                            https://example.com/images/mobile_wallpaper1_468.png 468w,
+                            https://example.com/images/mobile_wallpaper1_589.png 589w" src="https://example.com/images/mobile_wallpaper1_589.png" alt="Mobile Wallpapers" />
+                    </div>
+                </label>
+            </li> -->
+      <li class="item2">
+        <input type="radio" name="point" id="slide2">
+        <label for="slide2" class="label">
+          <h4>What types of wallpapers do you offer?<br>
+            We provide high-resolution wallpapers designed specifically for laptops and mobiles<br>
+            featuring landscapes, minimalistic art, and vibrant graphics.</h4><span class="control"></span>
+          <!-- <div class="slider">
+                        <img sizes="(max-width: 589px) 100vw" srcset="
+                            https://example.com/images/laptop_wallpaper2_320.png 320w,
+                            https://example.com/images/laptop_wallpaper2_468.png 468w,
+                            https://example.com/images/laptop_wallpaper2_589.png 589w" src="lion.jpg" alt="Laptop Wallpapers" />
+                    </div> -->
+        </label>
+      </li>
+      <li class="item3">
+        <input type="radio" name="point" id="slide3">
+        <label for="slide3" class="label">
+          <h4>How can I find the right wallpaper size?<br>
+            You can check our sizing guide on the website,<br>
+            which includes recommended dimensions .</h4><span class="control"></span>
+          <!-- <div class="slider">
+                        <img sizes="(max-width: 589px) 100vw" srcset="
+                            https://example.com/images/size_guide_wallpaper3_320.png 320w,
+                            https://example.com/images/size_guide_wallpaper3_468.png 468w,
+                            https://example.com/images/size_guide_wallpaper3_589.png 589w" src="https://example.com/images/size_guide_wallpaper3_589.png" alt="Wallpaper Size Guide" />
+                    </div> -->
+        </label>
+      </li>
+      <li class="item4">
+        <input type="radio" name="point" id="slide4">
+        <label for="slide4" class="label">
+          <h4>Can I preview how a wallpaper will look ?<br>
+            Yes, we offer a preview feature.</h4><span class="control"></span>
+          <!-- <div class="slider">
+                        <img sizes="(max-width: 589px) 100vw" srcset="
+                            https://example.com/images/preview_wallpaper4_320.png 320w,
+                            https://example.com/images/preview_wallpaper4_468.png 468w,
+                            https://example.com/images/preview_wallpaper4_589.png 589w" src="https://example.com/images/preview_wallpaper4_589.png" alt="Wallpaper Preview" />
+                    </div> -->
+        </label>
+      </li>
+      <li class="item5">
+        <input type="radio" name="point" id="slide5">
+        <label for="slide5" class="label">
+          <h4>Are the wallpapers free to download?<br>
+            Yes, all our wallpapers are available for free download,<br>
+            and you can use them for personal use on any device.</h4><span class="control"></span>
+          <!-- <div class="slider">
+                        <img sizes="(max-width: 589px) 100vw" srcset="
+                            https://example.com/images/free_download_wallpaper5_320.png 320w,
+                            https://example.com/images/free_download_wallpaper5_468.png 468w,
+                            https://example.com/images/free_download_wallpaper5_589.png 589w" src="https://example.com/images/free_download_wallpaper5_589.png" alt="Free Wallpapers" />
+                    </div> -->
+        </label>
+      </li>
+    </ul>
+
+
+  </main>
+
+
+
+
+  <footer class="custom-footer">
+    <div class="footer-logo-section">
+      <div class="footer-logo">
+        <img src="logo1.png" alt="Your Logo" />
+      </div>
+    </div>
+
+    <div class="footer-content">
+      <div class="footer-links-section">
+        <h4>Quick Links</h4>
+        <ul class="footer-quick-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+
+
+      <div class="footer-links-section">
+        <h4>Contact</h4>
+        <ul class="footer-quick-links">
+          <li><a href="login.html">Login</a></li>
+          <li><a href="signup.html">Sign up</a></li>
+          <li><a href="account.html">Account</a></li>
+
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="terms.html">Terms & Conditions</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-social-section">
+        <h4>Connect With Us</h4>
+        <div class="social-links">
+          <a href="https://www.facebook.com/login/">
+            <img src="facebook.png" alt="Facebook" class="social-icon" />
+          </a>
+          <a href="https://x.com/login">
+            <img src="twitter.png" alt="Twitter" class="social-icon" />
+          </a>
+          <a href="https://www.instagram.com/">
+            <img src="instagram.png" alt="Instagram" class="social-icon" />
+          </a>
+          <a href="https://pixabay.com/images/search/desktop%20wallpaper/">
+            <img src="pixabay (.png" alt="Pixabay" class="social-icon" />
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-subscribe-section">
+        <h4>Subscribe to Our Newsletter</h4>
+        <p>Receive the latest updates and offers.</p>
+        <form class="subscribe-form" onsubmit="showPopup(event)">
+          <input type="email" placeholder="Enter your email" required>
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+
+      <!-- Popup HTML -->
+      <div id="thankYouPopup" class="popup" style="display: none;">
+        <div class="popup-content">
+          <span class="close-popup" onclick="closePopup()">&times;</span>
+          <p>Thank you for subscribing!</p>
+        </div>
+      </div>
+  </footer>
+
+
+
+
+  <!-- External JavaScript -->
+  <script src="hf.js"></script>
+  <script>
+    let li = document.querySelectorAll(".faq-text li");
+    for (var i = 0; i < li.length; i++) {
+      li[i].addEventListener("click", (e) => {
+        let clickedLi;
+        if (e.target.classList.contains("question-arrow")) {
+          clickedLi = e.target.parentElement;
+        } else {
+          clickedLi = e.target.parentElement.parentElement;
+        }
+        clickedLi.classList.toggle("showAnswer");
+      });
+    }
+  </script>
+
+
+  <script>
+    function toggleMenu() {
+      const navLinks = document.querySelector(".nav-links");
+      navLinks.classList.toggle("active");
+    }
+  </script>
+
+
+
+  <!-- Add this to your script or before the closing body tag -->
+  <script>
+    function showPopup(event) {
+      event.preventDefault(); // Prevent form submission
+      document.getElementById("thankYouPopup").style.display = "block"; // Show the popup
+    }
+
+    function closePopup() {
+      document.getElementById("thankYouPopup").style.display = "none"; // Hide the popup
+    }
+
+    // Optional: Close the popup when clicking outside of it
+    window.onclick = function (event) {
+      const popup = document.getElementById("thankYouPopup");
+      if (event.target == popup) {
+        popup.style.display = "none";
+      }
+    }
+  </script>
+
+  <!-- External JavaScript -->
+  <script src="hf.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Creature Views</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="hf.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  </head>
+  <style>
+   
+    
+    .unique-container {
+        width: 90%;
+        max-width: 1200px; /* Max width for larger screens */
+        margin: 0 auto;
+        padding: 20px 0;
+        overflow-x: hidden;
+    }
+    
+    .unique-filters {
+        display: flex;
+        flex-direction: column; /* Stack on small screens */
+        align-items: center; /* Center align on small screens */
+        gap: 10px; /* Adjust gap for smaller screens */
+        margin-bottom: 20px;
+        padding: 10px;
+        background-color: #fff; /* White background for filters */
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    }
+    
+    @media (min-width: 600px) {
+        .unique-filters {
+            flex-direction: row; /* Row layout for larger screens */
+        }
+    }
+    
+    .unique-filter {
+        font-size: 14px;
+    }
+    
+    label {
+        margin-right: 5px;
+        font-weight: bold; /* Bold labels */
+    }
+    
+    select {
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        transition: border-color 0.3s;
+    }
+    
+    select:hover {
+        border-color: #007bff; /* Highlight on hover */
+    }
+    
+    .unique-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    justify-content: center; /* Center the gallery items */
+}
+
+.unique-gallery img {
+    width: 100%; /* Make images responsive */
+    height: 200px; /* Fixed height for uniformity */
+    object-fit: cover; /* Maintain aspect ratio with cropping */
+    border-radius: 5px;
+    transition: transform 0.2s; /* Smooth zoom effect */
+}
+
+    
+    .unique-gallery img:hover {
+        transform: scale(1.05); /* Zoom effect on hover */
+    }
+    
+    .unique-pagination {
+        display: flex;
+        justify-content: center;
+        margin: 20px 0;
+    }
+    
+    .unique-pagination button {
+        background-color:  rgb(240, 225, 150); /* Primary button color */
+        border: none;
+        color: black;
+        padding: 10px 20px;
+        margin: 0 5px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s; /* Smooth transition */
+    }
+    
+    .unique-pagination button:hover {
+        background-color: rgb(235, 213, 105); /* Darker blue on hover */
+    }
+    
+    .unique-pagination button:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+    }
+    
+    .unique-gallery-title {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 2rem; /* Adjust size as needed */
+        color: #333; /* Dark color for visibility */
+        font-weight: bold; /* Bold for emphasis */
+    }
+    
+    /* Media Queries for Responsive Design */
+    @media (max-width: 768px) {
+        .unique-gallery-title {
+            font-size: 1.5rem; /* Smaller title on medium devices */
+        }
+    
+        .unique-filters {
+            flex-direction: column; /* Stack filters vertically on small devices */
+        }
+    
+        .unique-filter {
+            font-size: 12px; /* Smaller font size for filters */
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .unique-gallery-title {
+            font-size: 1.25rem; /* Even smaller title on small devices */
+        }
+    
+        .unique-pagination button {
+            padding: 8px 12px; /* Smaller buttons on small devices */
+        }
+    }
+</style>
+  <body>
+    <!-- Header Section -->
+    <header class="sticky-header">
+      <div class="container">
+        <div class="logo">
+          <a href="index.html">
+            <img src="logo1.png" alt="Giftsy Logo" />
+          </a>
+        </div>
+
+        <!-- Hamburger Menu Icon -->
+        <div class="hamburger" onclick="toggleMenu()">
+          <i class="fas fa-bars"></i>
+        </div>
+
+        <!-- nav bar -->
+        <nav class="navbar">
+          <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+          </ul>
+        </nav>
+
+        <!-- Search Bar -->
+        <div class="dropdown">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Search for Animal Wallpapers..."
+            onkeyup="filterFunction()"
+          />
+          <div id="dropdownContent" class="dropdown-content"></div>
+        </div>
+        <a href="account.html" class="user-icon">
+          <i class="fas fa-user"></i>
+        </a>
+      </div>
+    </header>
+    <div class="unique-container">
+      <h1 class="unique-gallery-title">Wallpaper Gallery</h1> <!-- Added heading -->
+      <div class="unique-filters">
+          <div class="unique-filter">
+              <label for="sort">Sort by:</label>
+              <select id="sort" onchange="updateGallery()">
+                  <option value="popularity">Popularity</option>
+                  <option value="newness">Newness</option>
+                  <option value="resolution">Resolution</option>
+              </select>
+          </div>
+          <div class="unique-filter">
+              <label for="filter">Filter by:</label>
+              <select id="filter" onchange="updateGallery()">
+                  <option value="all">All</option>
+                  <option value="hd">HD</option>
+                  <option value="4k">4K</option>
+              </select>
+          </div>
+      </div>
+      <div class="unique-gallery" id="gallery"></div>
+      <div class="unique-pagination" id="pagination">
+          <button id="prevBtn" onclick="changePage(-1)">Previous</button>
+          <button id="nextBtn" onclick="changePage(1)">Next</button>
+      </div>
+</div>
+  
+    <br /><br /><br /><br /><br />
+
+    <!-- footer start -->
+
+    <footer class="custom-footer">
+      <div class="footer-logo-section">
+        <div class="footer-logo">
+          <img src="logo1.png" alt="Your Logo" />
+        </div>
+      </div>
+
+      <div class="footer-content">
+        <div class="footer-links-section">
+          <h4>Quick Links</h4>
+          <ul class="footer-quick-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links-section">
+          <h4>Contact</h4>
+          <ul class="footer-quick-links">
+            <li><a href="login.html">Login</a></li>
+            <li><a href="signup.html">Sign up</a></li>
+            <li><a href="account.html">Account</a></li>
+
+            <li><a href="privacy.html">Privacy</a></li>
+            <li><a href="terms.html">Terms & Conditions</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-social-section">
+          <h4>Connect With Us</h4>
+          <div class="social-links">
+            <a href="https://www.facebook.com/login/">
+              <img src="facebook.png" alt="Facebook" class="social-icon" />
+            </a>
+            <a href="https://x.com/login">
+              <img src="twitter.png" alt="Twitter" class="social-icon" />
+            </a>
+            <a href="https://www.instagram.com/">
+              <img src="instagram.png" alt="Instagram" class="social-icon" />
+            </a>
+            <a href="https://pixabay.com/images/search/desktop%20wallpaper/">
+              <img src="pixabay (.png" alt="Pixabay" class="social-icon" />
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-subscribe-section">
+          <h4>Subscribe to Our Newsletter</h4>
+          <p>Receive the latest updates and offers.</p>
+          <form class="subscribe-form" onsubmit="showPopup(event)">
+              <input type="email" placeholder="Enter your email" required>
+              <button type="submit">Subscribe</button>
+          </form>
+      </div>
+      
+      <!-- Popup HTML -->
+      <div id="thankYouPopup" class="popup" style="display: none;">
+          <div class="popup-content">
+              <span class="close-popup" onclick="closePopup()">&times;</span>
+              <p>Thank you for subscribing!</p>
+          </div>
+      </div>
+    </footer>
+
+    <script>
+      const images = [
+
+      { src: 'mammals1.jpg', alt: 'Lion', resolution: 'hd', popularity: 5, newness: 1, link: 'mammals1.html' },
+{ src: 'mammals2.jpg', alt: 'Tiger', resolution: '4k', popularity: 3, newness: 2, link: 'mammals2.html' },
+{ src: 'mammals3.jpg', alt: 'Elephant', resolution: 'hd', popularity: 4, newness: 3, link: 'mammals3.html' },
+{ src: 'mammals4.jpg', alt: 'Bear', resolution: '4k', popularity: 2, newness: 4, link: 'mammals4.html' },
+{ src: 'mammals5.jpg', alt: 'Giraffe', resolution: 'hd', popularity: 1, newness: 5, link: 'mammals5.html' },
+{ src: 'mammals6.jpg', alt: 'Kangaroo', resolution: '4k', popularity: 6, newness: 6, link: 'mammals6.html' },
+{ src: 'mammals7.jpg', alt: 'Dolphin', resolution: 'hd', popularity: 7, newness: 7, link: 'mammals7.html' },
+{ src: 'mammals8.jpg', alt: 'Wolf', resolution: '4k', popularity: 8, newness: 8, link: 'mammals8.html' },
+{ src: 'mammals9.jpg', alt: 'Zebra', resolution: 'hd', popularity: 9, newness: 9, link: 'mammals9.html' },
+{ src: 'mammals10.jpg', alt: 'Rhinoceros', resolution: '4k', popularity: 10, newness: 10, link: 'mammals10.html' },
+{ src: 'mammals11.jpg', alt: 'Hippopotamus', resolution: 'hd', popularity: 11, newness: 11, link: 'mammals11.html' },
+{ src: 'mammals12.jpg', alt: 'Cheetah', resolution: '4k', popularity: 12, newness: 12, link: 'mammals12.html' },
+{ src: 'mammals13.jpg', alt: 'Gorilla', resolution: 'hd', popularity: 13, newness: 13, link: 'mammals13.html' },
+{ src: 'mammals14.jpg', alt: 'Chimpanzee', resolution: '4k', popularity: 14, newness: 14, link: 'mammals14.html' },
+{ src: 'mammals15.jpg', alt: 'Fox', resolution: 'hd', popularity: 15, newness: 15, link: 'mammals15.html' },
+{ src: 'mammals16.jpg', alt: 'Moose', resolution: '4k', popularity: 16, newness: 16, link: 'mammals16.html' },
+{ src: 'mammals17.jpg', alt: 'Bison', resolution: 'hd', popularity: 17, newness: 17, link: 'mammals17.html' },
+{ src: 'mammals18.jpg', alt: 'Squirrel', resolution: '4k', popularity: 18, newness: 18, link: 'mammals18.html' },
+{ src: 'mammals19.jpg', alt: 'Rabbit', resolution: 'hd', popularity: 19, newness: 19, link: 'mammals19.html' },
+{ src: 'mammals20.jpg', alt: 'Raccoon', resolution: '4k', popularity: 20, newness: 20, link: 'mammals20.html' },
+{ src: 'mammals21.jpg', alt: 'Hedgehog', resolution: 'hd', popularity: 21, newness: 21, link: 'mammals21.html' },
+{ src: 'mammals22.jpg', alt: 'Platypus', resolution: '4k', popularity: 22, newness: 22, link: 'mammals22.html' },
+{ src: 'mammals23.jpg', alt: 'Sloth', resolution: 'hd', popularity: 23, newness: 23, link: 'mammals23.html' },
+{ src: 'mammals24.jpg', alt: 'Anteater', resolution: '4k', popularity: 24, newness: 24, link: 'mammals24.html' },
+{ src: 'mammals25.jpg', alt: 'Koala', resolution: 'hd', popularity: 25, newness: 25, link: 'mammals25.html' },
+{ src: 'mammals26.jpg', alt: 'Manatee', resolution: '4k', popularity: 26, newness: 26, link: 'mammals26.html' },
+{ src: 'mammals27.jpg', alt: 'Otter', resolution: 'hd', popularity: 27, newness: 27, link: 'mammals27.html' },
+{ src: 'mammals28.jpg', alt: 'Armadillo', resolution: '4k', popularity: 28, newness: 28, link: 'mammals28.html' },
+{ src: 'mammals29.jpg', alt: 'Ocelot', resolution: 'hd', popularity: 29, newness: 29, link: 'mammals29.html' },
+{ src: 'mammals30.jpg', alt: 'Lemur', resolution: '4k', popularity: 30, newness: 30, link: 'mammals30.html' },
+{ src: 'mammals31.jpg', alt: 'Tasmanian Devil', resolution: 'hd', popularity: 31, newness: 31, link: 'mammals31.html' },
+{ src: 'mammals32.jpg', alt: 'Tapir', resolution: '4k', popularity: 32, newness: 32, link: 'mammals32.html' },
+{ src: 'mammals33.jpg', alt: 'Okapi', resolution: 'hd', popularity: 33, newness: 33, link: 'mammals33.html' },
+{ src: 'mammals34.jpg', alt: 'Capybara', resolution: '4k', popularity: 34, newness: 34, link: 'mammals34.html' },
+{ src: 'mammals35.jpg', alt: 'Aardvark', resolution: 'hd', popularity: 35, newness: 35, link: 'mammals35.html' },
+{ src: 'mammals36.jpg', alt: 'Bighorn Sheep', resolution: '4k', popularity: 36, newness: 36, link: 'mammals36.html' },
+{ src: 'mammals37.jpg', alt: 'Wombat', resolution: 'hd', popularity: 37, newness: 37, link: 'mammals37.html' },
+ 
+{ src: 'birds1.jpg', alt: 'Eagle', resolution: '4k', popularity: 38, newness: 38, link: 'birds1.html' },
+{ src: 'birds2.jpg', alt: 'Sparrow', resolution: 'hd', popularity: 39, newness: 39, link: 'birds2.html' },
+{ src: 'birds3.jpg', alt: 'Parrot', resolution: '4k', popularity: 40, newness: 40, link: 'birds3.html' },
+{ src: 'birds4.jpg', alt: 'Penguin', resolution: 'hd', popularity: 41, newness: 41, link: 'birds4.html' },
+{ src: 'birds5.jpg', alt: 'Ostrich', resolution: '4k', popularity: 42, newness: 42, link: 'birds5.html' },
+{ src: 'birds6.jpg', alt: 'Flamingo', resolution: 'hd', popularity: 43, newness: 43, link: 'birds6.html' },
+{ src: 'birds7.jpg', alt: 'Hummingbird', resolution: '4k', popularity: 44, newness: 44, link: 'birds7.html' },
+{ src: 'birds8.jpg', alt: 'Owl', resolution: 'hd', popularity: 45, newness: 45, link: 'birds8.html' },
+{ src: 'birds9.jpg', alt: 'Woodpecker', resolution: '4k', popularity: 46, newness: 46, link: 'birds9.html' },
+{ src: 'birds10.jpg', alt: 'Canary', resolution: 'hd', popularity: 47, newness: 47, link: 'birds10.html' },
+{ src: 'birds11.jpg', alt: 'Dove', resolution: '4k', popularity: 48, newness: 48, link: 'birds11.html' },
+{ src: 'birds12.jpg', alt: 'Crow', resolution: 'hd', popularity: 49, newness: 49, link: 'birds12.html' },
+{ src: 'birds13.jpg', alt: 'Seagull', resolution: '4k', popularity: 50, newness: 50, link: 'birds13.html' },
+{ src: 'birds14.jpg', alt: 'Peacock', resolution: 'hd', popularity: 51, newness: 51, link: 'birds14.html' },
+{ src: 'birds15.jpg', alt: 'Swallow', resolution: '4k', popularity: 52, newness: 52, link: 'birds15.html' },
+{ src: 'birds16.jpg', alt: 'Robin', resolution: 'hd', popularity: 53, newness: 53, link: 'birds16.html' },
+{ src: 'birds17.jpg', alt: 'Pigeon', resolution: '4k', popularity: 54, newness: 54, link: 'birds17.html' },
+{ src: 'birds18.jpg', alt: 'Vulture', resolution: 'hd', popularity: 55, newness: 55, link: 'birds18.html' },
+{ src: 'birds19.jpg', alt: 'Pelican', resolution: '4k', popularity: 56, newness: 56, link: 'birds19.html' },
+{ src: 'birds20.jpg', alt: 'Macaw', resolution: 'hd', popularity: 57, newness: 57, link: 'birds20.html' },
+{ src: 'birds21.jpg', alt: 'Heron', resolution: '4k', popularity: 58, newness: 58, link: 'birds21.html' },
+{ src: 'birds22.jpg', alt: 'Finch', resolution: 'hd', popularity: 59, newness: 59, link: 'birds22.html' },
+{ src: 'birds23.jpg', alt: 'Cardinal', resolution: '4k', popularity: 60, newness: 60, link: 'birds23.html' },
+{ src: 'birds24.jpg', alt: 'Stork', resolution: 'hd', popularity: 61, newness: 61, link: 'birds24.html' },
+{ src: 'birds25.jpg', alt: 'Quail', resolution: '4k', popularity: 62, newness: 62, link: 'birds25.html' },
+{ src: 'birds26.jpg', alt: 'Goose', resolution: 'hd', popularity: 63, newness: 63, link: 'birds26.html' },
+{ src: 'birds27.jpg', alt: 'Hawk', resolution: '4k', popularity: 64, newness: 64, link: 'birds27.html' },
+{ src: 'birds28.jpg', alt: 'Kestrel', resolution: 'hd', popularity: 65, newness: 65, link: 'birds28.html' },
+{ src: 'birds29.jpg', alt: 'Albatross', resolution: '4k', popularity: 66, newness: 66, link: 'birds29.html' },
+{ src: 'birds30.jpg', alt: 'Kingfisher', resolution: 'hd', popularity: 67, newness: 67, link: 'birds30.html' },
+{ src: 'birds31.jpg', alt: 'Cockatoo', resolution: '4k', popularity: 68, newness: 68, link: 'birds31.html' },
+{ src: 'birds32.jpg', alt: 'Bluejay', resolution: 'hd', popularity: 69, newness: 69, link: 'birds32.html' },
+{ src: 'birds33.jpg', alt: 'Magpie', resolution: '4k', popularity: 70, newness: 70, link: 'birds33.html' },
+{ src: 'birds34.jpg', alt: 'Turaco', resolution: 'hd', popularity: 71, newness: 71, link: 'birds34.html' },
+{ src: 'birds35.jpg', alt: 'Tern', resolution: '4k', popularity: 72, newness: 72, link: 'birds35.html' },
+{ src: 'birds36.jpg', alt: 'Bowerbird', resolution: 'hd', popularity: 73, newness: 73, link: 'birds36.html' },
+{ src: 'birds37.jpg', alt: 'Secretary Bird', resolution: '4k', popularity: 74, newness: 74, link: 'birds37.html' },
+
+       
+{ src: 'reptiles1.jpg', alt: 'Alligator', resolution: 'hd', popularity: 75, newness: 75, link: 'reptiles1.html' },
+{ src: 'reptiles2.avif', alt: 'Crocodile', resolution: '4k', popularity: 76, newness: 76, link: 'reptiles2.html' },
+{ src: 'reptiles3.jpg', alt: 'Turtle', resolution: 'hd', popularity: 77, newness: 77, link: 'reptiles3.html' },
+{ src: 'reptiles4.jpg', alt: 'Tortoise', resolution: '4k', popularity: 78, newness: 78, link: 'reptiles4.html' },
+{ src: 'reptiles5.jpg', alt: 'Iguana', resolution: 'hd', popularity: 79, newness: 79, link: 'reptiles5.html' },
+{ src: 'reptiles6.jpg', alt: 'Gecko', resolution: '4k', popularity: 80, newness: 80, link: 'reptiles6.html' },
+{ src: 'reptiles7.jpg', alt: 'Chameleon', resolution: 'hd', popularity: 81, newness: 81, link: 'reptiles7.html' },
+{ src: 'reptiles8.jpg', alt: 'Python', resolution: '4k', popularity: 82, newness: 82, link: 'reptiles8.html' },
+{ src: 'reptiles9.jpg', alt: 'Rattlesnake', resolution: 'hd', popularity: 83, newness: 83, link: 'reptiles9.html' },
+{ src: 'reptiles10.jpg', alt: 'Cobra', resolution: '4k', popularity: 84, newness: 84, link: 'reptiles10.html' },
+{ src: 'reptiles11.jpg', alt: 'Monitor Lizard', resolution: 'hd', popularity: 85, newness: 85, link: 'reptiles11.html' },
+{ src: 'reptiles12.jpg', alt: 'Anole', resolution: '4k', popularity: 86, newness: 86, link: 'reptiles12.html' },
+{ src: 'reptiles13.jpg', alt: 'Komodo Dragon', resolution: 'hd', popularity: 87, newness: 87, link: 'reptiles13.html' },
+{ src: 'reptiles14.jpg', alt: 'Gila Monster', resolution: '4k', popularity: 88, newness: 88, link: 'reptiles14.html' },
+{ src: 'reptiles15.jpg', alt: 'Box Turtle', resolution: 'hd', popularity: 89, newness: 89, link: 'reptiles15.html' },
+{ src: 'reptiles16.jpg', alt: 'Horned Lizard', resolution: '4k', popularity: 90, newness: 90, link: 'reptiles16.html' },
+{ src: 'reptiles17.jpg', alt: 'Skink', resolution: 'hd', popularity: 91, newness: 91, link: 'reptiles17.html' },
+{ src: 'reptiles18.jpg', alt: 'Viper', resolution: '4k', popularity: 92, newness: 92, link: 'reptiles18.html' },
+{ src: 'reptiles19.jpg', alt: 'Tuatara', resolution: 'hd', popularity: 93, newness: 93, link: 'reptiles19.html' },
+{ src: 'reptiles20.jpg', alt: 'Blue Racer', resolution: '4k', popularity: 94, newness: 94, link: 'reptiles20.html' },
+{ src: 'reptiles21.jpg', alt: 'Water Snake', resolution: 'hd', popularity: 95, newness: 95, link: 'reptiles21.html' },
+{ src: 'reptiles22.jpg', alt: 'Tree Boa', resolution: '4k', popularity: 96, newness: 96, link: 'reptiles22.html' },
+{ src: 'reptiles23.jpg', alt: 'Eastern Diamondback Rattlesnake', resolution: 'hd', popularity: 97, newness: 97, link: 'reptiles23.html' },
+{ src: 'reptiles24.jpg', alt: 'King Snake', resolution: '4k', popularity: 98, newness: 98, link: 'reptiles24.html' },
+{ src: 'reptiles25.jpg', alt: 'Green Iguana', resolution: 'hd', popularity: 99, newness: 99, link: 'reptiles25.html' },
+{ src: 'reptiles26.jpg', alt: 'Frilled Lizard', resolution: '4k', popularity: 100, newness: 100, link: 'reptiles26.html' },
+{ src: 'reptiles27.jpg', alt: 'Olive Ridley Turtle', resolution: 'hd', popularity: 101, newness: 101, link: 'reptiles27.html' },
+{ src: 'reptiles28.jpg', alt: 'Leatherback Turtle', resolution: '4k', popularity: 102, newness: 102, link: 'reptiles28.html' },
+{ src: 'reptiles29.jpg', alt: 'Cottonmouth', resolution: 'hd', popularity: 103, newness: 103, link: 'reptiles29.html' },
+{ src: 'reptiles30.jpg', alt: 'Bearded Dragon', resolution: '4k', popularity: 104, newness: 104, link: 'reptiles30.html' },
+{ src: 'reptiles31.jpg', alt: 'Spiny Lizard', resolution: 'hd', popularity: 105, newness: 105, link: 'reptiles31.html' },
+{ src: 'reptiles32.jpg', alt: 'Chukwalla', resolution: '4k', popularity: 106, newness: 106, link: 'reptiles32.html' },
+{ src: 'reptiles33.jpg', alt: 'Sidewinder Rattlesnake', resolution: 'hd', popularity: 107, newness: 107, link: 'reptiles33.html' },
+{ src: 'reptiles34.jpg', alt: 'Rat Snake', resolution: '4k', popularity: 108, newness: 108, link: 'reptiles34.html' },
+{ src: 'reptiles35.jpg', alt: 'Red-eared Slider', resolution: 'hd', popularity: 109, newness: 109, link: 'reptiles35.html' },
+{ src: 'reptiles36.jpg', alt: 'Nile Monitor', resolution: '4k', popularity: 110, newness: 110, link: 'reptiles36.html' },
+{ src: 'reptiles37.jpg', alt: 'Sand Boa', resolution: 'hd', popularity: 111, newness: 111, link: 'reptiles37.html' },
+
+      
+{ src: 'aqua1.jpg', alt: 'Shark', resolution: '4k', popularity: 112, newness: 112, link: 'aqua1.html' },
+{ src: 'aqua2.jpg', alt: 'Dolphin', resolution: 'hd', popularity: 113, newness: 113, link: 'aqua2.html' },
+{ src: 'aqua3.jpg', alt: 'Whale', resolution: '4k', popularity: 114, newness: 114, link: 'aqua3.html' },
+{ src: 'aqua4.jpg', alt: 'Octopus', resolution: 'hd', popularity: 115, newness: 115, link: 'aqua4.html' },
+{ src: 'aqua5.jpg', alt: 'Squid', resolution: '4k', popularity: 116, newness: 116, link: 'aqua5.html' },
+{ src: 'aqua6.jpg', alt: 'Seahorse', resolution: 'hd', popularity: 117, newness: 117, link: 'aqua6.html' },
+{ src: 'aqua7.jpg', alt: 'Jellyfish', resolution: '4k', popularity: 118, newness: 118, link: 'aqua7.html' },
+{ src: 'aqua8.jpg', alt: 'Sea Turtle', resolution: 'hd', popularity: 119, newness: 119, link: 'aqua8.html' },
+{ src: 'aqua9.jpg', alt: 'Starfish', resolution: '4k', popularity: 120, newness: 120, link: 'aqua9.html' },
+{ src: 'aqua10.jpg', alt: 'Clownfish', resolution: 'hd', popularity: 121, newness: 121, link: 'aqua10.html' },
+{ src: 'aqua11.jpg', alt: 'Barracuda', resolution: '4k', popularity: 122, newness: 122, link: 'aqua11.html' },
+{ src: 'aqua12.jpg', alt: 'Manta Ray', resolution: 'hd', popularity: 123, newness: 123, link: 'aqua12.html' },
+{ src: 'aqua13.jpg', alt: 'Lobster', resolution: '4k', popularity: 124, newness: 124, link: 'aqua13.html' },
+{ src: 'aqua14.jpg', alt: 'Crab', resolution: 'hd', popularity: 125, newness: 125, link: 'aqua14.html' },
+{ src: 'aqua15.jpg', alt: 'Sea Urchin', resolution: '4k', popularity: 126, newness: 126, link: 'aqua15.html' },
+{ src: 'aqua16.jpg', alt: 'Anemone', resolution: 'hd', popularity: 127, newness: 127, link: 'aqua16.html' },
+{ src: 'aqua17.jpg', alt: 'Moray Eel', resolution: '4k', popularity: 128, newness: 128, link: 'aqua17.html' },
+{ src: 'aqua18.jpg', alt: 'Angelfish', resolution: 'hd', popularity: 129, newness: 129, link: 'aqua18.html' },
+{ src: 'aqua19.jpg', alt: 'Swordfish', resolution: '4k', popularity: 130, newness: 130, link: 'aqua19.html' },
+{ src: 'aqua20.jpg', alt: 'Tuna', resolution: 'hd', popularity: 131, newness: 131, link: 'aqua20.html' },
+{ src: 'aqua21.jpg', alt: 'Sea Cucumber', resolution: '4k', popularity: 132, newness: 132, link: 'aqua21.html' },
+{ src: 'aqua22.jpg', alt: 'Manatee', resolution: 'hd', popularity: 133, newness: 133, link: 'aqua22.html' },
+{ src: 'aqua23.jpg', alt: 'Sea Lion', resolution: '4k', popularity: 134, newness: 134, link: 'aqua23.html' },
+{ src: 'aqua24.jpg', alt: 'Narwhal', resolution: 'hd', popularity: 135, newness: 135, link: 'aqua24.html' },
+{ src: 'aqua25.jpg', alt: 'Beluga Whale', resolution: '4k', popularity: 136, newness: 136, link: 'aqua25.html' },
+{ src: 'aqua26.jpg', alt: 'Coral', resolution: 'hd', popularity: 137, newness: 137, link: 'aqua26.html' },
+{ src: 'aqua27.jpg', alt: 'Lanternfish', resolution: '4k', popularity: 138, newness: 138, link: 'aqua27.html' },
+{ src: 'aqua28.jpg', alt: 'Puffin', resolution: 'hd', popularity: 139, newness: 139, link: 'aqua28.html' },
+{ src: 'aqua29.jpg', alt: 'Blue Whale', resolution: '4k', popularity: 140, newness: 140, link: 'aqua29.html' },
+{ src: 'aqua30.jpg', alt: 'Oarfish', resolution: 'hd', popularity: 141, newness: 141, link: 'aqua30.html' },
+{ src: 'aqua31.jpg', alt: 'Bottle-nose Dolphin', resolution: '4k', popularity: 142, newness: 142, link: 'aqua31.html' },
+{ src: 'aqua32.jpg', alt: 'Cleaner Shrimp', resolution: 'hd', popularity: 143, newness: 143, link: 'aqua32.html' },
+{ src: 'aqua33.jpg', alt: 'Goby Fish', resolution: '4k', popularity: 144, newness: 144, link: 'aqua33.html' },
+{ src: 'aqua34.jpg', alt: 'Electric Eel', resolution: 'hd', popularity: 145, newness: 145, link: 'aqua34.html' },
+{ src: 'aqua35.jpg', alt: 'Pufferfish', resolution: '4k', popularity: 146, newness: 146, link: 'aqua35.html' },
+{ src: 'aqua36.jpg', alt: 'Grouper', resolution: 'hd', popularity: 147, newness: 147, link: 'aqua36.html' },
+{ src: 'aqua37.jpg', alt: 'Triggerfish', resolution: '4k', popularity: 148, newness: 148, link: 'aqua37.html' },
+
+   
+   
+       // Continue adding more as needed up to 150
+       // ...
+   ];
+   
+   
+           let currentPage = 1;
+           const itemsPerPage = 78;
+   
+           function updateGallery() {
+               const sortValue = document.getElementById('sort').value;
+               const filterValue = document.getElementById('filter').value;
+   
+               let filteredImages = images;
+   
+               // Filter by resolution
+               if (filterValue !== 'all') {
+                   filteredImages = filteredImages.filter(img => img.resolution === filterValue);
+               }
+   
+               // Sort the images
+               if (sortValue === 'popularity') {
+                   filteredImages.sort((a, b) => b.popularity - a.popularity);
+               } else if (sortValue === 'newness') {
+                   filteredImages.sort((a, b) => a.newness - b.newness);
+               }
+   
+               // Calculate total pages
+               const totalPages = Math.ceil(filteredImages.length / itemsPerPage);
+               currentPage = Math.min(currentPage, totalPages);
+   
+               // Generate HTML for the gallery
+               const gallery = document.getElementById('gallery');
+               gallery.innerHTML = '';
+   
+               const startIndex = (currentPage - 1) * itemsPerPage;
+               const endIndex = startIndex + itemsPerPage;
+               const paginatedImages = filteredImages.slice(startIndex, endIndex);
+   
+               paginatedImages.forEach(img => {
+                   const imgElement = document.createElement('a');
+                   imgElement.href = img.link; // Link to the respective subpage
+                   imgElement.innerHTML = `<img alt="${img.alt}" src="${img.src}" />`;
+                   gallery.appendChild(imgElement);
+               });
+   
+               // Update pagination buttons
+               document.getElementById('prevBtn').disabled = currentPage === 1;
+               document.getElementById('nextBtn').disabled = currentPage === totalPages || totalPages === 0;
+           }
+   
+           function changePage(direction) {
+               currentPage += direction;
+               updateGallery();
+           }
+   
+           // Initialize the gallery
+           updateGallery();
+       </script>
+
+    <!-- Script to toggle mobile menu -->
+    <script>
+      function toggleMenu() {
+        const navLinks = document.querySelector(".nav-links");
+        navLinks.classList.toggle("active");
+      }
+    </script>
+
+
+<!-- Add this to your script or before the closing body tag -->
+<script>
+  function showPopup(event) {
+      event.preventDefault(); // Prevent form submission
+      document.getElementById("thankYouPopup").style.display = "block"; // Show the popup
+  }
+
+  function closePopup() {
+      document.getElementById("thankYouPopup").style.display = "none"; // Hide the popup
+  }
+
+  // Optional: Close the popup when clicking outside of it
+  window.onclick = function(event) {
+      const popup = document.getElementById("thankYouPopup");
+      if (event.target == popup) {
+          popup.style.display = "none";
+      }
+  }
+</script>
+
+    <!-- External JavaScript -->
+    <script src="hf.js"></script>
+
+  
+  </body>
+</html>
