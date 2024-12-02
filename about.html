@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Creature Views</title>
+    <link rel="stylesheet" href="hf.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  </head>
+  <style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        color: white;
+        background-size: cover;
+        background-position: center;
+        height: 100%;
+        overflow-x: hidden;
+    }
+
+    .section {
+        padding: 50px;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+    }
+
+    .hero-section {
+        background-image: url('p1.avif');
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .hero-section h1 {
+        font-size: 60px;
+        margin: 0;
+    }
+
+    .hero-section p {
+        font-size: 20px;
+        margin-top: 10px;
+    }
+
+    .hero-section .button {
+        margin-top: 30px;
+        padding: 10px 30px;
+        font-size: 18px;
+        color: white;
+        background-color: transparent;
+        border: 1px solid white;
+        cursor: pointer;
+    }
+
+    .explore-section {
+        padding: 50px;
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .explore-title {
+        font-size: 36px;
+        margin-bottom: 20px;
+    }
+
+    .explore-grid {
+        display: flex;
+        justify-content: space-around;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .explore-card {
+        background-color: #33333386;
+        color: white;
+        padding: 20px;
+        width: 100%;
+        max-width: 300px;
+        border-radius: 8px;
+    }
+
+    .explore-card img {
+        width: 100%;
+        border-radius: 8px;
+    }
+
+    .explore-card h3 {
+        margin-top: 15px;
+        font-size: 22px;
+    }
+
+    .explore-card p {
+        margin-top: 10px;
+        font-size: 16px;
+    }
+
+    .feature-section {
+        background-image: url('f2.jpeg');
+        background-size: cover;
+        background-position: center;
+        height: 80vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .feature-section h2 {
+        font-size: 48px;
+        margin-right: 35%;
+        max-width: 100%;
+    }
+
+    /* Media queries for responsiveness */
+    @media screen and (max-width: 1024px) {
+        .feature-section {
+            height: 70vh;
+            padding: 15px;
+        }
+
+        .feature-section h2 {
+            font-size: 36px;
+            margin-right: 0;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .feature-section {
+            height: 60vh;
+            padding: 10px;
+        }
+
+        .feature-section h2 {
+            font-size: 28px;
+            margin-right: 0;
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        .feature-section {
+            height: 50vh;
+            padding: 5px;
+        }
+
+        .feature-section h2 {
+            font-size: 24px;
+            margin-right: 0;
+        }
+    }
+
+    .news-section {
+        padding: 50px;
+        background-color: black;
+        color: white;
+    }
+
+    .news-section h2 {
+        font-size: 32px;
+        margin-bottom: 20px;
+    }
+
+    .news-content {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .news-image {
+        background-image: url('news1.avif');
+        background-size: cover;
+        background-position: center;
+        height: 200px;
+    }
+
+    .news-text {
+        text-align: left;
+    }
+
+    .news-text p {
+        margin-top: 20px;
+        font-size: 16px;
+        line-height: 1.6;
+    }
+
+    .photographers-section {
+        background-color: black;
+        padding: 50px;
+    }
+
+    .photographers-section h2 {
+        font-size: 36px;
+        margin-bottom: 20px;
+    }
+
+    .photographers-gallery {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .photographers-gallery img {
+        width: 100%;
+        max-width: 180px;
+        border-radius: 8px;
+    }
+
+    .footer {
+        padding: 20px;
+        background-color: #222;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .footer .footer-column {
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
+    }
+
+    .footer p {
+        color: #bbb;
+    }
+
+    .team-member:hover img {
+        transform: scale(1.1);
+    }
+
+    .team-member:hover .overlay {
+        opacity: 1;
+    }
+
+    .team-member:hover {
+        transform: scale(1.05);
+        box-shadow: 0px 0px 25px rgba(0, 255, 255, 1);
+    }
+
+    @media screen and (max-width: 1024px) {
+        .hero-section h1 {
+            font-size: 48px;
+        }
+
+        .hero-section p {
+            font-size: 18px;
+        }
+
+        .explore-grid {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .photographers-gallery {
+            align-items: center;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .hero-section h1 {
+            font-size: 36px;
+        }
+
+        .hero-section p {
+            font-size: 16px;
+        }
+
+        .explore-grid {
+            width: 100%;
+        }
+
+        .photographers-gallery img {
+            max-width: 100%;
+        }
+
+        .footer {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        .hero-section h1 {
+            font-size: 28px;
+        }
+
+        .hero-section p {
+            font-size: 14px;
+        }
+
+        .explore-card {
+            width: 100%;
+        }
+
+        .news-section h2, .photographers-section h2 {
+            font-size: 24px;
+        }
+
+        .footer .footer-column {
+            width: 100%;
+            text-align: center;
+        }
+    }
+
+    /*** Gallery Start ***/
+    .center {
+        position: relative;
+        width: 1500px;
+        left: -70px;
+        perspective: 1200px;
+    }
+    
+    .center .img-card {
+        position: relative;
+        height: 350px;
+        width: 400px;
+        transform-style: preserve-3d;
+        transition: transform .5s ease-in;
+        margin-left: 30%;
+    }
+    
+    .img-card img {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+    
+    .img-card img:nth-child(1) {
+        transform: rotateX(-270deg) translateY(-175px);
+        transform-origin: top left;
+    }
+    
+    .img-card img:nth-child(2) {
+        transform: translateZ(175px);
+    }
+    
+    .img-card img:nth-child(3) {
+        transform: rotateX(-90deg) translateY(175px);
+        transform-origin: bottom center;
+    }
+    
+    .img-card img:nth-child(4) {
+        transform: rotateX(-180deg) translateY(350px) translateZ(175px);
+        transform-origin: bottom right;
+    }
+
+    #tab-1:checked ~ .img-card {
+        transform: rotateX(-90deg);
+    }
+    
+    #tab-2:checked ~ .img-card {
+        transform: rotateX(0deg);
+    }
+    
+    #tab-3:checked ~ .img-card {
+        transform: rotateX(90deg);
+    }
+    
+    #tab-4:checked ~ .img-card {
+        transform: rotateX(180deg);
+    }
+    
+    .sliders {
+        position: absolute;
+        display: block;
+        right: 0;
+        top: -30px;
+    }
+    
+    .sliders label {
+        height: 98px;
+        width: 110px;
+        display: flex;
+        overflow: hidden;
+        cursor: pointer;
+        margin: 6px 0;
+        border: 2px solid #2d4052;
+    }
+    
+    .sliders label:nth-child(1) {
+        margin-top: 0;
+    }
+    
+    label img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        transition: all .3s ease-in;
+    }
+    
+    input[name="tab"] {
+        display: none;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .center {
+            width: 100%;
+            left: 0;
+            padding:  20px;
+        }
+        
+        .center .img-card {
+            margin-left: 0;
+            width: 300px;
+            height: 250px;
+        }
+        
+        .img-card img {
+            max-width: 100%;
+        }
+    }
+    
+    @media screen and (max-width: 768px) {
+        .center {
+            width: 100%;
+            left: 0;
+            padding: 0 10px;
+        }
+    
+        .center .img-card {
+            width: 250px;
+            height: 200px;
+            margin-left: 0;
+        }
+        
+        .sliders label {
+            width: 80px;
+            height: 80px;
+        }
+    
+        .sliders label img {
+            width: 100%;
+        }
+    }
+    
+    @media screen and (max-width: 480px) {
+        .center {
+            width: 100%;
+            left: 0;
+            padding: 0 5px;
+        }
+    
+        .center .img-card {
+            width: 180px;
+            height: 150px;
+            margin-left: 0;
+        }
+    
+        .sliders label {
+            width: 60px;
+            height: 60px;
+        }
+    }
+
+    /* Additional responsive styles for text and other content */
+    @media screen and (max-width: 1024px) {
+        .mx-auto.text-center h1 {
+            font-size: 32px;
+        }
+
+        .mx-auto.text-center p {
+            font-size: 16px;
+            padding-left: 10px;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .mx-auto.text-center h1 {
+            font-size: 28px;
+        }
+
+        .mx-auto.text-center p {
+            font-size: 14px;
+            padding-left: 5px;
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        .mx-auto.text-center h1 {
+            font-size: 24px;
+        }
+
+        .mx-auto.text-center p {
+            font-size: 12px;
+            padding-left: 2px;
+        }
+    }
+</style>
+    
+
+
+    <body>
+        <!-- Header Section -->
+        <header class="sticky-header">
+          <div class="container">
+            <div class="logo">
+              <a href="index.html">
+                <img src="logo1.png" alt="Giftsy Logo" />
+              </a>
+            </div>
+    
+            <!-- Hamburger Menu Icon -->
+            <div class="hamburger" onclick="toggleMenu()">
+              <i class="fas fa-bars"></i>
+            </div>
+    
+            <!-- nav bar -->
+            <nav class="navbar">
+              <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+              </ul>
+            </nav>
+    
+            <!-- Search Bar -->
+            <div class="dropdown">
+              <input
+                type="text"
+                id="searchInput"
+                placeholder="Search for Animal Wallpapers..."
+                onkeyup="filterFunction()"
+              />
+              <div id="dropdownContent" class="dropdown-content"></div>
+            </div>
+            <a href="account.html" class="user-icon">
+              <i class="fas fa-user"></i>
+            </a>
+          </div>
+        </header>
+
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <h1>Welcome to Creature Views</h1>
+        <p>Your ultimate destination for breathtaking animal wallpapers that bring nature closer to you.</p>
+        <a href="gallery.html">
+            <button class="button">Explore More</button>
+        </a>
+            </div>
+
+    <!-- Know Us Section -->
+    <div class="explore-section section">
+        <h2 class="explore-title">Know Us</h2>
+        <div class="explore-grid">
+            <div class="explore-card" style="border: 2px solid #7bbcd4; border-radius: 10px; padding: 20px; box-shadow: 0 0 10px #7bbcd4, 0 0 20px #7bbcd4, 0 0 30px #7bbcd4; transition: transform 0.3s;">
+                <img src="mission-removebg-preview.png" alt="Mission Image" style="width: 100px; height: 100px; object-fit: cover;">
+                <h3>Mission</h3>
+                <p>At Creature Views, our mission is to inspire a deeper connection with nature by providing high-quality animal wallpapers that capture the beauty and diversity of wildlife across the globe.</p>
+            </div>
+            <div class="explore-card" style="border: 2px solid #7bbcd4; border-radius: 10px; padding: 20px; box-shadow: 0 0 10px #7bbcd4, 0 0 20px #7bbcd4, 0 0 30px #7bbcd4; transition: transform 0.3s;">
+                <img src="v1-removebg-preview.png" alt="Vision Image" style="width: 100px; height: 100px; object-fit: cover;">
+                <h3>Vision</h3>
+                <p>Our vision is to create a world where every screen brings the wild to life, allowing people to appreciate and understand the importance of wildlife conservation through stunning visual experiences.</p>
+            </div>
+            <div class="explore-card" style="border: 2px solid #7bbcd4; border-radius: 10px; padding: 20px; box-shadow: 0 0 10px #7bbcd4, 0 0 20px #7bbcd4, 0 0 30px #7bbcd4; transition: transform 0.3s;">
+                <img src="value-removebg-preview.png" alt="Values Image" style="width: 100px; height: 100px; object-fit: cover;">
+                <h3>Values</h3>
+                <p>We are committed to quality, sustainability, and wildlife preservation. We believe in using our platform to educate, inspire, and encourage action to protect our planet's creatures.</p>
+            </div>
+        </div>
+    </div>
+    
+    
+
+    <!-- Feature Section -->
+    <div class="feature-section">
+        <h2>ABOUT US</h2>
+        <h2>Bringing Wildlife to Your Screens</h2>
+        <p style="margin-right: 55%; text-align: center; max-width: 600px;  margin-right:35%;">
+            Experience the natural world in its full glory with Creature Views' collection of high-resolution animal wallpapers. 
+            Our extensive library features stunning images of wildlife from around the globe, carefully curated for quality and diversity. 
+            Each wallpaper is designed to enhance your digital experience, bringing vibrant colors and breathtaking scenes to your devices. 
+            Join us in celebrating the beauty of nature and the importance of wildlife conservation with every image you choose.
+        </p>
+    </div>
+    <br>
+    <br>
+    
+
+    <div class="mx-auto text-center mb-5" style="max-width: 1900px; display: flex; align-items: center;">
+        <div class="center" style="flex: 1; padding-right: 360px; margin-left: 0px; margin-bottom: 9px;"> <!-- Adjusted padding -->
+            <input type="radio" checked name="active" id="tab-1">
+            <input type="radio" name="active" id="tab-2">
+            <input type="radio" name="active" id="tab-3">
+            <input type="radio" name="active" id="tab-4">
+            <div class="sliders" style="margin-bottom: 10px;"> <!-- Adjusted spacing -->
+                <label for="tab-1"><img src="lion.jpg" alt="Lion" style="max-width: 100px;"></label>
+                <label for="tab-2"><img src="cheetah2.png" alt="Cheetah" style="max-width: 100px;"></label>
+                <label for="tab-3"><img src="panda3.jpg" alt="Panda" style="max-width: 100px;"></label>
+                <label for="tab-4"><img src="ele.jpg" alt="Elephant" style="max-width: 100px;"></label>
+            </div>
+            <div class="img-card" style="display: flex; gap: 20px;"> <!-- Adjusted gap -->
+                <img src="lion.jpg" alt="Lion" style="max-width: 400px;">
+                <img src="cheetah2.png" alt="Cheetah" style="max-width: 400px;">
+                <img src="panda3.jpg" alt="Panda" style="max-width: 400px;">
+                <img src="ele.jpg" alt="Elephant" style="max-width: 400px;">
+            </div>
+        </div>
+        <div style="flex: 1; padding-left: 20px;"> <!-- Adjusted padding -->
+            <h1 class="section-title" style="color: black;">Why Us?</h1>
+            <p style="color: black;">
+                Welcome to Creature Views, your ultimate destination for captivating animal wallpapers! 
+                Our mission is to bring the beauty of wildlife into your everyday life. Explore our curated 
+                collection featuring stunning images of animals in their natural habitats, each telling a unique story. 
+                Whether you’re a nature enthusiast or simply looking to refresh your screen, we have something for everyone. 
+                Dive into our gallery and let the wonders of the animal kingdom inspire your next adventure!
+            </p>
+        </div>
+    </div>
+    
+    <!-- Gallery End -->
+
+    <br>
+    <br>
+    
+    <!-- Top Photographers Section -->
+    <div class="photographers-section section">
+        <h2>Meet the Team Behind Creature Views</h2>
+        <p>At Creature Views, our dedicated team of passionate individuals works tirelessly to bring you the most captivating animal wallpapers from around the world. Our team combines expertise in wildlife photography, design, and conservation to curate a unique collection that showcases the beauty of nature.</p>
+        <br>
+        <br>
+        <div class="photographers-gallery" style="display: flex; gap: 5px; justify-content: center; flex-wrap: wrap;">
+            <div class="team-member" style="text-align: center; width: 200px;">
+                <div style="position: relative; overflow: hidden; width: 200px; height: 200px; border: 3px solid transparent; transition: transform 0.3s, box-shadow 0.3s; box-shadow: 0px 0px 15px rgba(0, 255, 255, 0.7);">
+                    <img src="team1.jpeg" alt="John Doe" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;">
+                </div>
+                <h3 style="margin: 10px 0 5px 0; color: white;">Sam</h3>
+                <p style="margin: 0; color: white;">Wildlife Photographer</p>
+            </div>
+            
+            <div class="team-member" style="text-align: center; width: 200px;">
+                <div style="position: relative; overflow: hidden; width: 200px; height: 200px; border: 3px solid transparent; transition: transform 0.3s, box-shadow 0.3s; box-shadow: 0px 0px 15px rgba(255, 0, 255, 0.7);">
+                    <img src="team2.avif" alt="Jane Smith" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;">
+                </div>
+                <h3 style="margin: 10px 0 5px 0; color: white;">Annie</h3>
+                <p style="margin: 0; color: white;">Creative Director</p>
+            </div>
+            
+            <div class="team-member" style="text-align: center; width: 200px;">
+                <div style="position: relative; overflow: hidden; width: 200px; height: 200px; border: 3px solid transparent; transition: transform 0.3s, box-shadow 0.3s; box-shadow: 0px 0px 15px rgba(0, 255, 0, 0.7);">
+                    <img src="team3.jpeg" alt="Emily Johnson" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;">
+                </div>
+                <h3 style="margin: 10px 0 5px 0; color: white;">Hitesh</h3>
+                <p style="margin: 0; color: white;">Conservation Specialist</p>
+            </div>
+            
+            <div class="team-member" style="text-align: center; width: 200px;">
+                <div style="position: relative; overflow: hidden; width: 200px; height: 200px; border: 3px solid transparent; transition: transform 0.3s, box-shadow 0.3s; box-shadow: 0px 0px 15px rgba(255, 255, 0, 0.7);">
+                    <img src="team4.jpeg" alt="Michael Lee" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;">
+                </div>
+                <h3 style="margin: 10px 0 5px 0; color: white;">Alekhya</h3>
+                <p style="margin: 0; color: white;">Lead Designer</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- footer start -->
+
+    <footer class="custom-footer">
+        <div class="footer-logo-section">
+          <div class="footer-logo">
+            <img src="logo1.png" alt="Your Logo" />
+          </div>
+        </div>
+  
+        <div class="footer-content">
+          <div class="footer-links-section">
+            <h4>Quick Links</h4>
+            <ul class="footer-quick-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="faq.html">FAQ</a></li>
+              <li><a href="gallery.html">Gallery</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+  
+          <div class="footer-links-section">
+            <h4>Contact</h4>
+            <ul class="footer-quick-links">
+              <li><a href="login.html">Login</a></li>
+              <li><a href="signup.html">Sign up</a></li>
+              <li><a href="account.html">Account</a></li>
+  
+              <li><a href="privacy.html">Privacy</a></li>
+              <li><a href="terms.html">Terms & Conditions</a></li>
+            </ul>
+          </div>
+  
+          <div class="footer-social-section">
+            <h4>Connect With Us</h4>
+            <div class="social-links">
+              <a href="https://www.facebook.com/login/">
+                <img src="facebook.png" alt="Facebook" class="social-icon" />
+              </a>
+              <a href="https://x.com/login">
+                <img src="twitter.png" alt="Twitter" class="social-icon" />
+              </a>
+              <a href="https://www.instagram.com/">
+                <img src="instagram.png" alt="Instagram" class="social-icon" />
+              </a>
+              <a href="https://pixabay.com/images/search/desktop%20wallpaper/">
+                <img src="pixabay (.png" alt="Pixabay" class="social-icon" />
+              </a>
+            </div>
+          </div>
+  
+          <div class="footer-subscribe-section">
+            <h4>Subscribe to Our Newsletter</h4>
+            <p>Receive the latest updates and offers.</p>
+            <form class="subscribe-form" onsubmit="showPopup(event)">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+        
+        <!-- Popup HTML -->
+        <div id="thankYouPopup" class="popup" style="display: none;">
+            <div class="popup-content">
+                <span class="close-popup" onclick="closePopup()">&times;</span>
+                <p>Thank you for subscribing!</p>
+            </div>
+        </div>
+      </footer>
+<!-- Script to toggle mobile menu -->
+<script>
+    function toggleMenu() {
+      const navLinks = document.querySelector(".nav-links");
+      navLinks.classList.toggle("active");
+    }
+  </script>
+
+
+<!-- Add this to your script or before the closing body tag -->
+<script>
+function showPopup(event) {
+    event.preventDefault(); // Prevent form submission
+    document.getElementById("thankYouPopup").style.display = "block"; // Show the popup
+}
+
+function closePopup() {
+    document.getElementById("thankYouPopup").style.display = "none"; // Hide the popup
+}
+
+// Optional: Close the popup when clicking outside of it
+window.onclick = function(event) {
+    const popup = document.getElementById("thankYouPopup");
+    if (event.target == popup) {
+        popup.style.display = "none";
+    }
+}
+</script>
+
+  <!-- External JavaScript -->
+  <script src="hf.js"></script>  
+
+</body>
+</html>

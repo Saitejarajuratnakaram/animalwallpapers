@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Creature Views</title>
+    <link rel="stylesheet" href="hf.css" />
+    <!-- user acc css -->
+    <link rel="stylesheet" href="account.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header class="sticky-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="logo1.png" alt="Giftsy Logo" />
+                </a>
+            </div>
+
+            <!-- Hamburger Menu Icon -->
+            <div class="hamburger" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </div>
+
+            <!-- nav bar -->
+            <nav class="navbar">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </nav>
+
+            <!-- Search Bar -->
+            <div class="dropdown">
+                <input type="text" id="searchInput" placeholder="Search for Animal Wallpapers..."
+                    onkeyup="filterFunction()" />
+                <div id="dropdownContent" class="dropdown-content"></div>
+            </div>
+            <a href="account.html" class="user-icon">
+                <i class="fas fa-user"></i>
+            </a>
+        </div>
+    </header>
+
+    <br /><br /><br /><br /><br />
+
+
+
+    <!-- Main container -->
+    <div class="container1">
+        <h1>Welcome to Creature Views!</h1>
+        <p>Manage your profile, download history, wishlist, and browse the gallery of wallpapers below.</p>
+
+        <!-- Action buttons -->
+        <button class="button" onclick="viewProfile()">View Profile</button>
+        <button class="button" onclick="viewDownloads()">View Download History</button>
+        <button class="button" onclick="viewWishlist()">Manage Wishlist</button>
+        <button class="button" onclick="viewGallery()">View Gallery</button>
+        <!-- <button class="button" onclick="logout()">Logout</button> -->
+
+        <div id="message" class="message"></div>
+
+        <!-- Profile Section -->
+        <div id="profile" class="profile">
+            <h2 style="text-decoration: underline;">YOUR PROFILE</h2>
+            <!-- Display Latest Profile Information -->
+            <div id="latest-profile" class="latest-profile">
+                <h3>Latest Profile Information</h3>
+                <p><strong>Name:</strong> <span id="display-name">Senorita</span></p>
+                <p><strong>Email:</strong> <span id="display-email">sana@example.com</span></p>
+                <p><strong>Phone:</strong> <span id="display-phone">+91 9876543210</span></p>
+                <p><strong>Location:</strong> <span id="display-location">Hyderabad, India</span></p>
+            </div>
+
+            <!-- Edit Profile Button -->
+            <button class="button" onclick="showEditProfile()">Edit Profile</button>
+
+            <!-- Edit Profile Section -->
+            <div id="edit-profile" style="display:none;">
+                <h2 style="text-decoration: underline;">EDIT PROFILE</h2>
+                <form id="profile-form"
+                    style="margin: 20px 0; padding: 20px; background-color: rgba(255, 255, 255, 0.9); border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
+                    <label for="name"
+                        style="display: block; font-weight: bold; margin: 12px 0 6px; color: #444;">Name:</label>
+                    <input type="text" id="name" value="Senorita"
+                        style="width: 95%; padding: 12px; margin-bottom: 16px; border: 1px solid #ddd; border-radius: 5px; font-size: 1rem; transition: border-color 0.3s ease;">
+
+                    <label for="email"
+                        style="display: block; font-weight: bold; margin: 12px 0 6px; color: #444;">Email:</label>
+                    <input type="email" id="email" value="sana@example.com"
+                        style="width: 95%; padding: 12px; margin-bottom: 16px; border: 1px solid #ddd; border-radius: 5px; font-size: 1rem; transition: border-color 0.3s ease;">
+
+                    <label for="phone"
+                        style="display: block; font-weight: bold; margin: 12px 0 6px; color: #444;">Phone:</label>
+                    <input type="text" id="phone" value="+91 9876543210"
+                        style="width: 95%; padding: 12px; margin-bottom: 16px; border: 1px solid #ddd; border-radius: 5px; font-size: 1rem; transition: border-color 0.3s ease;">
+
+                    <label for="location"
+                        style="display: block; font-weight: bold; margin: 12px 0 6px; color: #444;">Location:</label>
+                    <input type="text" id="location" value="Hyderabad, India"
+                        style="width: 95%; padding: 12px; margin-bottom: 16px; border: 1px solid #ddd; border-radius: 5px; font-size: 1rem; transition: border-color 0.3s ease;">
+
+                    <button type="button" class="button" onclick="saveProfile()"
+                        style="width: 95%; padding: 12px; background-color: #5fb162; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 1.1rem; transition: background-color 0.3s, transform 0.2s ease;">Save
+                        Changes</button>
+                </form>
+                <div id="profile-message" class="message"></div>
+            </div>
+
+        </div>
+
+        <!-- Download History Section -->
+        <div id="downloads" class="downloads" style="display:none;">
+            <h2>Download History</h2>
+            <div class="download-item">
+                <p><strong>Wallpaper 1:</strong> Sunset Beach</p>
+                <p><strong>Downloaded on:</strong> 2024-08-20</p>
+            </div>
+            <div class="download-item">
+                <p><strong>Wallpaper 2:</strong> Forest Trail</p>
+                <p><strong>Downloaded on:</strong> 2024-08-18</p>
+            </div>
+        </div>
+
+        <!-- Wishlist Section -->
+        <div id="wishlist" class="wishlist" style="display:none;">
+            <h2>Your Wishlist</h2>
+            <div id="wishlist-items">
+                <!-- Dynamically added wishlist items will appear here -->
+            </div>
+        </div>
+
+        <!-- Gallery Section -->
+        <div id="gallery" class="gallery" style="display:none;">
+            <h2>Gallery</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="aqua3.jpg" alt="Wallpaper 1">
+                    <i class="wishlist-icon fas fa-heart" onclick="addToWishlist('aqua3.jpg')"></i>
+                </div>
+                <div class="gallery-item">
+                    <img src="aqua7.jpg" alt="Wallpaper 2">
+                    <i class="wishlist-icon fas fa-heart" onclick="addToWishlist('aqua7.jpg')"></i>
+                </div>
+                <div class="gallery-item">
+                    <img src="aqua8.jpg" alt="Wallpaper 3">
+                    <i class="wishlist-icon fas fa-heart" onclick="addToWishlist('aqua8.jpg')"></i>
+                </div>
+                <div class="gallery-item">
+                    <img src="aqua12.jpg" alt="Wallpaper 4">
+                    <i class="wishlist-icon fas fa-heart" onclick="addToWishlist('aqua12.jpg')"></i>
+                </div>
+                <div class="gallery-item">
+                    <img src="aqua14.jpg" alt="Wallpaper 5">
+                    <i class="wishlist-icon fas fa-heart" onclick="addToWishlist('aqua14.jpg')"></i>
+                </div>
+                <div class="gallery-item">
+                    <img src="aqua18.jpg" alt="Wallpaper 6">
+                    <i class="wishlist-icon fas fa-heart" onclick="addToWishlist('aqua18.jpg')"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Modal -->
+    <div id="image-modal" class="modal">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <div class="modal-content">
+            <img id="modal-image" src="" alt="Full View">
+        </div>
+    </div>
+
+
+
+
+    <!-- footer start -->
+
+    <footer class="custom-footer">
+        <div class="footer-logo-section">
+            <div class="footer-logo">
+                <img src="logo1.png" alt="Your Logo" />
+            </div>
+        </div>
+
+        <div class="footer-content">
+            <div class="footer-links-section">
+                <h4>Quick Links</h4>
+                <ul class="footer-quick-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links-section">
+                <h4>Contact</h4>
+                <ul class="footer-quick-links">
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="signup.html">Sign up</a></li>
+                    <li><a href="account.html">Account</a></li>
+
+                    <li><a href="privacy.html">Privacy</a></li>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-social-section">
+                <h4>Connect With Us</h4>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/login/">
+                        <img src="facebook.png" alt="Facebook" class="social-icon" />
+                    </a>
+                    <a href="https://x.com/login">
+                        <img src="twitter.png" alt="Twitter" class="social-icon" />
+                    </a>
+                    <a href="https://www.instagram.com/">
+                        <img src="instagram.png" alt="Instagram" class="social-icon" />
+                    </a>
+                    <a href="https://pixabay.com/images/search/desktop%20wallpaper/">
+                        <img src="pixabay (.png" alt="Pixabay" class="social-icon" />
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-subscribe-section">
+                <h4>Subscribe to Our Newsletter</h4>
+                <p style="color: whitesmoke; font-size: 15px;">Receive the latest updates and offers.</p>
+                <form class="subscribe-form" onsubmit="showPopup(event)">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+
+            <!-- Popup HTML -->
+            <div id="thankYouPopup" class="popup" style="display: none;">
+                <div class="popup-content">
+                    <span class="close-popup" onclick="closePopup()">&times;</span>
+                    <p>Thank you for subscribing!</p>
+                </div>
+            </div>
+    </footer>
+
+    <!-- Script to toggle mobile menu -->
+    <script>
+        function toggleMenu() {
+            const navLinks = document.querySelector(".nav-links");
+            navLinks.classList.toggle("active");
+        }
+    </script>
+
+
+    <!-- Add this to your script or before the closing body tag -->
+    <script>
+        function showPopup(event) {
+            event.preventDefault(); // Prevent form submission
+            document.getElementById("thankYouPopup").style.display = "block"; // Show the popup
+        }
+
+        function closePopup() {
+            document.getElementById("thankYouPopup").style.display = "none"; // Hide the popup
+        }
+
+        // Optional: Close the popup when clicking outside of it
+        window.onclick = function (event) {
+            const popup = document.getElementById("thankYouPopup");
+            if (event.target == popup) {
+                popup.style.display = "none";
+            }
+        }
+    </script>
+
+    <script>
+        function viewProfile() {
+            toggleSection('profile');
+            document.getElementById('edit-profile').style.display = 'none'; // Hide edit section on view
+        }
+
+        function viewDownloads() {
+            toggleSection('downloads');
+        }
+
+        function viewWishlist() {
+            toggleSection('wishlist');
+        }
+
+        function viewGallery() {
+            toggleSection('gallery');
+        }
+
+        function showEditProfile() {
+            document.getElementById('edit-profile').style.display = 'block'; // Show edit section
+        }
+
+        function toggleSection(sectionId) {
+            var sections = ['profile', 'downloads', 'wishlist', 'gallery'];
+            sections.forEach(function (section) {
+                document.getElementById(section).style.display = 'none';
+            });
+            document.getElementById(sectionId).style.display = 'block';
+        }
+
+        function viewWishlistImage(imageSrc) {
+            document.getElementById('modal-image').src = imageSrc;
+            document.getElementById('image-modal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('image-modal').style.display = 'none';
+        }
+
+        var wishlistItems = [];
+
+        function addToWishlist(imageSrc) {
+            if (!wishlistItems.includes(imageSrc)) {
+                wishlistItems.push(imageSrc);
+                updateWishlist();
+            } else {
+                alert("This item is already in your wishlist.");
+            }
+        }
+
+        function removeFromWishlist(imageSrc) {
+            wishlistItems = wishlistItems.filter(item => item !== imageSrc);
+            updateWishlist();
+        }
+
+        function updateWishlist() {
+            var wishlistDiv = document.getElementById('wishlist-items');
+            wishlistDiv.innerHTML = ''; // Reset wishlist content
+            wishlistItems.forEach(function (image) {
+                var itemDiv = document.createElement('div');
+                itemDiv.style.marginBottom = "20px"; // Margin for spacing
+
+                var imgElement = document.createElement('img');
+                imgElement.src = image;
+                imgElement.alt = "Wishlist Image";
+                imgElement.style.width = "100px";
+                imgElement.style.cursor = "pointer"; // Cursor pointer for clickable images
+                imgElement.style.display = "block"; // Display block for alignment
+                imgElement.style.marginBottom = "10px"; // Add margin between image and button
+                imgElement.onclick = function () { viewWishlistImage(image); }; // Open in modal on click
+
+                var removeButton = document.createElement('button');
+                removeButton.textContent = "Remove";
+                removeButton.className = "button";
+                removeButton.style.marginTop = "5px"; // Add some top margin to create space
+                removeButton.onclick = function () { removeFromWishlist(image); }; // Remove item from wishlist
+
+                itemDiv.appendChild(imgElement);
+                itemDiv.appendChild(removeButton);
+                wishlistDiv.appendChild(itemDiv);
+            });
+        }
+
+        function saveProfile() {
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var phone = document.getElementById('phone').value;
+            var location = document.getElementById('location').value;
+
+            document.getElementById('display-name').textContent = name;
+            document.getElementById('display-email').textContent = email;
+            document.getElementById('display-phone').textContent = phone;
+            document.getElementById('display-location').textContent = location;
+
+            document.getElementById('profile-message').textContent = 'Profile updated successfully!';
+            document.getElementById('edit-profile').style.display = 'none'; // Hide edit section after saving
+        }
+    </script>
+
+    <!-- External JavaScript -->
+    <script src="hf.js"></script>
+
+</body>
+
+</html>
