@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Terms</title>
+    <link rel="stylesheet" href="hf.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header class="sticky-header">
+      <div class="container">
+        <div class="logo">
+          <a href="index.html">
+            <img src="logo1.png" alt="Giftsy Logo" />
+          </a>
+        </div>
+
+        <!-- Hamburger Menu Icon -->
+        <div class="hamburger" onclick="toggleMenu()">
+          <i class="fas fa-bars"></i>
+        </div>
+
+        <!-- nav bar -->
+        <nav class="navbar">
+          <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+          </ul>
+        </nav>
+
+        <!-- Search Bar -->
+        <div class="dropdown">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Search for Animal Wallpapers..."
+            onkeyup="filterFunction()"
+          />
+          <div id="dropdownContent" class="dropdown-content"></div>
+        </div>
+        <a href="account.html" class="user-icon">
+          <i class="fas fa-user"></i>
+        </a>
+      </div>
+    </header>
+    <main>
+        <h1>Terms and Conditions</h1>
+        <p>Welcome to Giftsy! These terms and conditions outline the rules and regulations for the use of our website.</p>
+
+        <h2>1. Acceptance of Terms</h2>
+        <p>By accessing this website, you accept these terms and conditions in full. If you disagree with any part of these terms, you must not use our website.</p>
+
+        <h2>2. Use License</h2>
+        <p>Permission is granted to temporarily download one copy of the materials (information or software) on Giftsy’s website for personal, non-commercial transitory viewing only.</p>
+
+        <h2>3. Limitations</h2>
+        <p>In no event shall Giftsy or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on Giftsy’s website.</p>
+
+        <h2>4. Modifications</h2>
+        <p>Giftsy may revise these terms of service for its website at any time without notice. By using this website, you are agreeing to be bound by the then current version of these terms of service.</p>
+
+        <h2>5. Governing Law</h2>
+        <p>These terms and conditions are governed by and construed in accordance with the laws of your country, and you irrevocably submit to the exclusive jurisdiction of the courts in that location.</p>
+    </main>
+    
+
+    <br /><br /><br /><br /><br />
+
+    <!-- footer start -->
+
+    <footer class="custom-footer">
+      <div class="footer-logo-section">
+        <div class="footer-logo">
+          <img src="logo1.png" alt="Your Logo" />
+        </div>
+      </div>
+
+      <div class="footer-content">
+        <div class="footer-links-section">
+          <h4>Quick Links</h4>
+          <ul class="footer-quick-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links-section">
+          <h4>Contact</h4>
+          <ul class="footer-quick-links">
+            <li><a href="login.html">Login</a></li>
+            <li><a href="signup.html">Sign up</a></li>
+            <li><a href="account.html">Account</a></li>
+
+            <li><a href="privacy.html">Privacy</a></li>
+            <li><a href="terms.html">Terms & Conditions</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-social-section">
+          <h4>Connect With Us</h4>
+          <div class="social-links">
+            <a href="https://www.facebook.com/login/">
+              <img src="facebook.png" alt="Facebook" class="social-icon" />
+            </a>
+            <a href="https://x.com/login">
+              <img src="twitter.png" alt="Twitter" class="social-icon" />
+            </a>
+            <a href="https://www.instagram.com/">
+              <img src="instagram.png" alt="Instagram" class="social-icon" />
+            </a>
+            <a href="https://pixabay.com/images/search/desktop%20wallpaper/">
+              <img src="pixabay (.png" alt="Pixabay" class="social-icon" />
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-subscribe-section">
+          <h4>Subscribe to Our Newsletter</h4>
+          <p>Receive the latest updates and offers.</p>
+          <form class="subscribe-form" onsubmit="showPopup(event)">
+              <input type="email" placeholder="Enter your email" required>
+              <button type="submit">Subscribe</button>
+          </form>
+      </div>
+      
+      <!-- Popup HTML -->
+      <div id="thankYouPopup" class="popup" style="display: none;">
+          <div class="popup-content">
+              <span class="close-popup" onclick="closePopup()">&times;</span>
+              <p>Thank you for subscribing!</p>
+          </div>
+      </div>
+    </footer>
+
+    <!-- Script to toggle mobile menu -->
+    <script>
+      function toggleMenu() {
+        const navLinks = document.querySelector(".nav-links");
+        navLinks.classList.toggle("active");
+      }
+    </script>
+
+
+<!-- Add this to your script or before the closing body tag -->
+<script>
+  function showPopup(event) {
+      event.preventDefault(); // Prevent form submission
+      document.getElementById("thankYouPopup").style.display = "block"; // Show the popup
+  }
+
+  function closePopup() {
+      document.getElementById("thankYouPopup").style.display = "none"; // Hide the popup
+  }
+
+  // Optional: Close the popup when clicking outside of it
+  window.onclick = function(event) {
+      const popup = document.getElementById("thankYouPopup");
+      if (event.target == popup) {
+          popup.style.display = "none";
+      }
+  }
+</script>
+
+    <!-- External JavaScript -->
+    <script src="hf.js"></script>
+  </body>
+</html>

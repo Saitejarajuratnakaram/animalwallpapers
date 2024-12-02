@@ -1,0 +1,251 @@
+.container-koala {
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 1200px;
+}
+
+.breadcrumb-koala {
+    padding: 10px 0;
+    margin-bottom: 0;
+}
+
+.breadcrumb-koala ul {
+    list-style: none;
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.breadcrumb-koala li {
+    font-size: 0.875rem;
+    color: #0073e6;
+}
+
+.breadcrumb-koala li a {
+    text-decoration: none;
+}
+
+.breadcrumb-koala li:not(:last-child)::after {
+    content: '/';
+    margin: 0 5px;
+    color: #666;
+}
+
+.image-title-koala {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.header-koala {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.main-image-koala {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.details-koala {
+    margin-top: 20px;
+}
+
+.details-koala .stats-koala {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+}
+
+.details-koala .stats-koala div {
+    font-size: 0.875rem;
+    color: #666;
+}
+
+.details-koala .title-koala {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.details-koala .subtitle-koala {
+    font-size: 1.25rem;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.details-koala .info-koala {
+    font-size: 0.875rem;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.details-koala .description-koala {
+    font-size: 0.875rem;
+    color: #666;
+    margin-bottom: 10px;
+}
+.related-images-koala .images-koala {
+    display: flex; /* Use flex for alignment */
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-around;
+}
+h3{
+    font-size: 36px;    
+}
+.related-images-koala .images-koala a {
+    flex: 1 1 calc(33.33% - 20px); /* Make each image responsive */
+    max-width: 200px; /* Optional: set a maximum width */
+    height: 200px; /* Set a fixed height */
+    overflow: hidden; /* Hide overflow */
+}
+
+.related-images-koala .images-koala img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Maintain aspect ratio while covering the area */
+    border-radius: 8px;
+}
+
+.images-koala a {
+    text-decoration: none;
+}
+
+.social-share-buttons-koala {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+
+.social-share-buttons-koala a {
+    text-decoration: none;
+}
+
+.share-button-koala {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: white;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.facebook-koala {
+    background-color: #3b5998;
+}
+
+.twitter-koala {
+    background-color: #1da1f2;
+}
+
+.linkedin-koala {
+    background-color: #0077b5;
+}
+
+.share-button-koala:hover {
+    opacity: 0.8;
+    transform: scale(1.1);
+}
+
+.actions-koala {
+    position: relative;
+}
+
+.actions-koala i {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.dropdown-koala {
+    display: none;
+    position: absolute;
+    top: 30px;
+    right: 0;
+    background-color: #fff;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-koala a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-koala a:hover {
+    background-color: #f1f1f1;
+}
+
+@media (max-width: 1024px) {
+    .details-koala .title-koala {
+        font-size: 1.75rem;
+    }
+
+    .details-koala .subtitle-koala {
+        font-size: 1.125rem;
+    }
+
+    .related-images-koala .images-koala img {
+        width: calc(50% - 10px);
+    }
+
+    .social-share-buttons-koala {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-koala {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .details-koala .title-koala {
+        font-size: 1.5rem;
+    }
+
+    .details-koala .subtitle-koala {
+        font-size: 1rem;
+    }
+
+    .related-images-koala .section-title-koala {
+        font-size: 1.25rem;
+    }
+
+    .related-images-koala .images-koala img {
+        width: calc(50% - 10px);
+    }
+}
+
+@media (max-width: 480px) {
+    .details-koala .stats-koala {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .related-images-koala .images-koala img {
+        width: 100%;
+    }
+
+    .social-share-buttons-koala {
+        justify-content: center;
+        gap: 5px;
+    }
+
+    .share-button-koala {
+        width: 35px;
+        height: 35px;
+    }
+}

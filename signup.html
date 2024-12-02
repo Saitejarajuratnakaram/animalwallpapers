@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Header</title>
+    <link rel="stylesheet" href="hf.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  </head>
+  <style>
+ .signup-form {
+    max-width: 400px; /* Limit width */
+    margin: 20px auto; /* Center the form */
+    padding: 20px; /* Add padding */
+    border: 1px solid #ccc; /* Add a border */
+    border-radius: 5px; /* Rounded corners */
+    background-color: #f9f9f9; /* Background color */
+}
+
+.form-group {
+    margin-bottom: 15px; /* Space between form groups */
+}
+
+.form-label {
+    display: block; /* Each label on a new line */
+    margin-bottom: 5px; /* Space below label */
+}
+
+.form-input {
+    width: 100%; /* Full width */
+    padding: 10px; /* Padding inside the input */
+    border: 1px solid #ccc; /* Border */
+    border-radius: 3px; /* Rounded corners */
+}
+
+.error-message {
+    color: red; /* Red color for error messages */
+    font-size: 12px; /* Smaller font for error messages */
+}
+
+.signup-button {
+    background-color: #5fb162; /* Button background color */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+    color: #fbf9f9; /* Set text color */
+    padding: 10px 20px; /* Add some padding */
+    font-size: 16px; /* Set font size */
+    cursor: pointer; /* Change cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.signup-button:hover {
+    background-color: #285629; /* Darken on hover */
+}
+
+
+  </style>
+  <body>
+    <!-- Header Section -->
+    <header class="sticky-header">
+      <div class="container">
+        <div class="logo">
+          <a href="index.html">
+            <img src="logo1.png" alt="Giftsy Logo" />
+          </a>
+        </div>
+
+        <!-- Hamburger Menu Icon -->
+        <div class="hamburger" onclick="toggleMenu()">
+          <i class="fas fa-bars"></i>
+        </div>
+
+        <!-- nav bar -->
+        <nav class="navbar">
+          <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+          </ul>
+        </nav>
+
+        <!-- Search Bar -->
+        <div class="dropdown">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Search for Animal Wallpapers..."
+            onkeyup="filterFunction()"
+          />
+          <div id="dropdownContent" class="dropdown-content"></div>
+        </div>
+        <a href="account.html" class="user-icon">
+          <i class="fas fa-user"></i>
+        </a>
+      </div>
+    </header>
+
+    <main>
+        <h1 style="text-align: center;">Sign Up</h1>
+        <form id="signupForm" onsubmit="return validateSignup()" class="signup-form">
+            <div class="form-group">
+                <label for="signupName" class="form-label">Name:</label>
+                <input type="text" id="signupName" class="form-input" placeholder="Enter your name" required onkeypress="return blockNumbers(event)">
+                <span class="error-message" id="signupNameError"></span>
+            </div>
+            <div class="form-group">
+                <label for="signupEmail" class="form-label">Email:</label>
+                <input type="email" id="signupEmail" class="form-input" placeholder="Enter your email" required>
+                <span class="error-message" id="signupEmailError"></span>
+            </div>
+            <div class="form-group">
+                <label for="signupPassword" class="form-label">Password:</label>
+                <input type="password" id="signupPassword" class="form-input" placeholder="Enter your password" required>
+                <span class="error-message" id="signupPasswordError"></span>
+            </div>
+            <div class="form-group">
+                <label for="signupConfirmPassword" class="form-label">Confirm Password:</label>
+                <input type="password" id="signupConfirmPassword" class="form-input" placeholder="Confirm your password" required>
+                <span class="error-message" id="signupConfirmPasswordError"></span>
+            </div>
+            <button type="submit" class="signup-button">Sign Up</button>
+        </form>
+    </main>
+    
+
+
+    <br />
+
+    <!-- footer start -->
+
+    <footer class="custom-footer">
+      <div class="footer-logo-section">
+        <div class="footer-logo">
+          <img src="logo1.png" alt="Your Logo" />
+        </div>
+      </div>
+
+      <div class="footer-content">
+        <div class="footer-links-section">
+          <h4>Quick Links</h4>
+          <ul class="footer-quick-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links-section">
+          <h4>Contact</h4>
+          <ul class="footer-quick-links">
+            <li><a href="login.html">Login</a></li>
+            <li><a href="signup.html">Sign up</a></li>
+            <li><a href="account.html">Account</a></li>
+
+            <li><a href="privacy.html">Privacy</a></li>
+            <li><a href="terms.html">Terms & Conditions</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-social-section">
+          <h4>Connect With Us</h4>
+          <div class="social-links">
+            <a href="https://www.facebook.com/login/">
+              <img src="facebook.png" alt="Facebook" class="social-icon" />
+            </a>
+            <a href="https://x.com/login">
+              <img src="twitter.png" alt="Twitter" class="social-icon" />
+            </a>
+            <a href="https://www.instagram.com/">
+              <img src="instagram.png" alt="Instagram" class="social-icon" />
+            </a>
+            <a href="https://pixabay.com/images/search/desktop%20wallpaper/">
+              <img src="pixabay (.png" alt="Pixabay" class="social-icon" />
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-subscribe-section">
+          <h4>Subscribe to Our Newsletter</h4>
+          <p>Receive the latest updates and offers.</p>
+          <form class="subscribe-form" onsubmit="showPopup(event)">
+              <input type="email" placeholder="Enter your email" required>
+              <button type="submit">Subscribe</button>
+          </form>
+      </div>
+      
+      <!-- Popup HTML -->
+      <div id="thankYouPopup" class="popup" style="display: none;">
+          <div class="popup-content">
+              <span class="close-popup" onclick="closePopup()">&times;</span>
+              <p>Thank you for subscribing!</p>
+          </div>
+      </div>
+    </footer>
+
+    <!-- Script to toggle mobile menu -->
+    <script>
+      function toggleMenu() {
+        const navLinks = document.querySelector(".nav-links");
+        navLinks.classList.toggle("active");
+      }
+    </script>
+ <script>
+  // Function to block numbers from being typed in the name field
+  function blockNumbers(event) {
+      const charCode = event.which || event.keyCode;
+
+      // Allow only alphabetic characters (A-Z, a-z), spaces, and basic control keys like backspace (keyCode 8)
+      if (
+          (charCode >= 48 && charCode <= 57) || // Disallow numbers (0-9)
+          (charCode >= 96 && charCode <= 105)  // Disallow numpad numbers (0-9)
+      ) {
+          return false; // Block the event if it's a number
+      }
+      return true; // Allow all other characters
+  }
+
+  function validateSignup() {
+      let name = document.getElementById("signupName").value;
+      let email = document.getElementById("signupEmail").value;
+      let password = document.getElementById("signupPassword").value;
+      let confirmPassword = document.getElementById("signupConfirmPassword").value;
+      let valid = true;
+
+      // Reset error messages
+      document.getElementById("signupNameError").innerText = "";
+      document.getElementById("signupEmailError").innerText = "";
+      document.getElementById("signupPasswordError").innerText = "";
+      document.getElementById("signupConfirmPasswordError").innerText = "";
+
+      // Validate name (only alphabetic characters are allowed)
+      const namePattern = /^[A-Za-z\s]+$/;
+      if (!namePattern.test(name)) {
+          document.getElementById("signupNameError").innerText = "Name must contain only letters.";
+          valid = false;
+      } else if (name.length < 2) {
+          document.getElementById("signupNameError").innerText = "Name must be at least 2 characters.";
+          valid = false;
+      }
+
+      // Validate email
+      if (!email.includes("@")) {
+          document.getElementById("signupEmailError").innerText = "Please enter a valid email.";
+          valid = false;
+      }
+
+      // Validate password length
+      if (password.length < 6) {
+          document.getElementById("signupPasswordError").innerText = "Password must be at least 6 characters.";
+          valid = false;
+      }
+
+      // Validate password match
+      if (password !== confirmPassword) {
+          document.getElementById("signupConfirmPasswordError").innerText = "Passwords do not match.";
+          valid = false;
+      }
+
+      if (valid) {
+          // Redirect to the welcome page after successful signup
+          window.location.href = "account.html"; // Change this to your actual welcome page
+      }
+
+      return false; // Prevent form submission
+  }
+</script>
+
+</script>
+<!-- Add this to your script or before the closing body tag -->
+<script>
+  function showPopup(event) {
+      event.preventDefault(); // Prevent form submission
+      document.getElementById("thankYouPopup").style.display = "block"; // Show the popup
+  }
+
+  function closePopup() {
+      document.getElementById("thankYouPopup").style.display = "none"; // Hide the popup
+  }
+
+  // Optional: Close the popup when clicking outside of it
+  window.onclick = function(event) {
+      const popup = document.getElementById("thankYouPopup");
+      if (event.target == popup) {
+          popup.style.display = "none";
+      }
+  }
+</script>
+
+    <!-- External JavaScript -->
+    <script src="hf.js"></script>
+  </body>
+</html>
