@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CreatureViews</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="sub.css"> 
+    <link rel="stylesheet" href="hf.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header class="sticky-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="logo1.png" alt="Giftsy Logo" />
+                </a>
+            </div>
+
+            <!-- Hamburger Menu Icon -->
+            <div class="hamburger" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </div>
+
+            <!-- nav bar -->
+            <nav class="navbar">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </nav>
+
+            <!-- Search Bar -->
+            <div class="dropdown">
+                <input type="text" id="searchInput" placeholder="Search for Animal Wallpapers..."
+                    onkeyup="filterFunction()" />
+                <div id="dropdownContent" class="dropdown-content"></div>
+            </div>
+            <a href="account.html" class="user-icon">
+                <i class="fas fa-user"></i>
+            </a>
+        </div>
+    </header>
+
+    <div class="container-koala">
+        <div class="image-title-koala">
+            Crab Scuttling on the Sandy Shore
+        </div>
+        <div class="breadcrumb-koala">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li>Crab Scuttling on the Sandy Shore</li>
+            </ul>
+        </div>
+        <img alt="Crab scuttling on the sandy shore" class="main-image-koala" src="aqua14.jpg" />
+        <br><br>
+        <span class="header-koala">
+            <div class="social-share-buttons-koala">
+                <a href="https://www.facebook.com/sharer/sharer.php?u=YOUR_URL" target="_blank"
+                    class="share-button-koala facebook-koala" aria-label="Share on Facebook">
+                    <i class="fab fa-facebook fa-lg"></i>
+                </a>
+                <a href="https://twitter.com/intent/tweet?url=YOUR_URL&text=Check%20this%20out!" target="_blank"
+                    class="share-button-koala twitter-koala" aria-label="Share on Twitter">
+                    <i class="fab fa-twitter fa-lg"></i>
+                </a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=YOUR_URL&title=Your%20Title&summary=Your%20Summary"
+                    target="_blank" class="share-button-koala linkedin-koala" aria-label="Share on LinkedIn">
+                    <i class="fab fa-linkedin fa-lg"></i>
+                </a>
+                <div class="actions-koala">
+                    <i class="fas fa-download fa-2x" onclick="toggleDropdownKoala()"></i>
+                    <div class="dropdown-koala" id="dropdown-koala">
+                        <a href="#" onclick="downloadImageKoala('2k')">2K</a>
+                        <a href="#" onclick="downloadImageKoala('1080p')">1080p</a>
+                    </div>
+                </div>
+            </div>
+        </span>
+        <div class="details-koala">
+            <div class="stats-koala">
+                <div>Views 21,123,456</div>
+                <div>Downloads 260,012</div>
+            </div>
+    
+            <div class="title-koala">Charming Crab on the Shoreline</div>
+            <div class="subtitle-koala">Symbol of Adaptability</div>
+            <div class="info-koala">
+                <div>📍 Beach Environment</div>
+                <div>📅 Published on March 20, 2021</div>
+                <div>📷 CANON INC., EOS-1D X Mark III</div>
+                <div>🆓 Free to use under the Unsplash License</div>
+            </div>
+            <div class="description">
+                <p>The crab, a small yet fascinating creature, is known for its ability to adapt to various environments. Scuttling across the sandy shore, this charming animal symbolizes resilience and adaptability in the face of change.</p>
+            </div>
+        </div>
+    
+        <div class="title-koala">Crab Scuttling on the Sandy Shore</div>
+        <div class="subtitle-koala">A delightful scene of a crab exploring its coastal habitat.</div>
+        <div class="info-koala">Crabs are admired for their unique behavior and adaptability. This image captures the charm and resilience of these remarkable creatures as they navigate the shoreline.</div>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="related-images-koala">
+        <div class="section-title-koala">
+            <h3 style="margin-left: 50px;">Related Images</h3>
+        </div>
+        <div class="images-koala">
+            <a href="aqua2.html"><img alt="Sparrow perched on a branch" src="aqua2.jpg" /></a>
+            <a href="aqua3.html"><img alt="Sparrow feeding" src="aqua3.jpg" /></a>
+            <a href="aqua8.html"><img alt="Close-up of a sparrow" src="aqua8.jpg" /></a>
+            <a href="aqua10.html"><img alt="Sparrow in flight" src="aqua10.jpg" /></a>
+            <a href="aqua12.html"><img alt="Sparrow on the ground" src="aqua12.jpg" /></a>
+        </div>
+    </div>
+
+    </div>
+    <br /><br /><br /><br /><br />
+
+    <!-- footer start -->
+
+    <footer class="custom-footer">
+        <div class="footer-logo-section">
+            <div class="footer-logo">
+                <img src="logo1.png" alt="Your Logo" />
+            </div>
+        </div>
+
+        <div class="footer-content">
+            <div class="footer-links-section">
+                <h4>Quick Links</h4>
+                <ul class="footer-quick-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links-section">
+                <h4>Contact</h4>
+                <ul class="footer-quick-links">
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="signup.html">Sign up</a></li>
+                    <li><a href="account.html">Account</a></li>
+
+                    <li><a href="privacy.html">Privacy</a></li>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-social-section">
+                <h4>Connect With Us</h4>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/login/">
+                        <img src="facebook.png" alt="Facebook" class="social-icon" />
+                    </a>
+                    <a href="https://x.com/login">
+                        <img src="twitter.png" alt="Twitter" class="social-icon" />
+                    </a>
+                    <a href="https://www.instagram.com/">
+                        <img src="instagram.png" alt="Instagram" class="social-icon" />
+                    </a>
+                    <a href="https://pixabay.com/images/search/desktop%20wallpaper/">
+                        <img src="pixabay (.png" alt="Pixabay" class="social-icon" />
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-subscribe-section">
+                <h4>Subscribe to Our Newsletter</h4>
+                <p>Receive the latest updates and offers.</p>
+                <form class="subscribe-form" onsubmit="showPopup(event)">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+
+            <!-- Popup HTML -->
+            <div id="thankYouPopup" class="popup" style="display: none;">
+                <div class="popup-content">
+                    <span class="close-popup" onclick="closePopup()">&times;</span>
+                    <p>Thank you for subscribing!</p>
+                </div>
+            </div>
+    </footer>
+
+    <!-- Script to toggle mobile menu -->
+    <script>
+        function toggleMenu() {
+            const navLinks = document.querySelector(".nav-links");
+            navLinks.classList.toggle("active");
+        }
+    </script>
+
+    <!-- Add this to your script or before the closing body tag -->
+    <script>
+        function showPopup(event) {
+            event.preventDefault(); // Prevent form submission
+            document.getElementById("thankYouPopup").style.display = "block"; // Show the popup
+        }
+
+        function closePopup() {
+            document.getElementById("thankYouPopup").style.display = "none"; // Hide the popup
+        }
+
+        // Optional: Close the popup when clicking outside of it
+        window.onclick = function (event) {
+            const popup = document.getElementById("thankYouPopup");
+            if (event.target == popup) {
+                popup.style.display = "none";
+            }
+        }
+    </script>
+
+    <!-- External JavaScript -->
+    <script src="hf.js"></script>
+
+    <script>
+        function toggleDropdownKoala() {
+            var dropdown = document.getElementById("dropdown-koala");
+            dropdown.style.display = dropdown.style.display === "none" || dropdown.style.display === "" ? "block" : "none";
+        }
+
+        function downloadImageKoala(size) {
+            var imageUrl = "aqua14.jpg";
+            var link = document.createElement("a");
+            link.href = imageUrl;
+            link.download = `Crab-wallpaper-${size}.jpg`;
+            link.click();
+        }
+    </script>
+</body>
+
+</html>
